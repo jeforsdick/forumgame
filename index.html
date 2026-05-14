@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Choose Your Coaching Path</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="./styles.css" />
 </head>
 <body>
   <div class="bg-blob blob-1"></div>
@@ -15,9 +15,7 @@
     <section class="card screen active" id="screen-landing">
       <div class="eyebrow">PBIS Leadership Forum</div>
       <h1>Choose Your Coaching Path</h1>
-      <p class="subtitle">
-        A live coaching simulation for moving from plan to practice.
-      </p>
+      <p class="subtitle">A live coaching simulation for moving from plan to practice.</p>
 
       <div class="illustration-row">
         <div class="avatar-card">
@@ -35,7 +33,9 @@
         and make decisions from an assigned coaching lens.
       </p>
 
-      <button class="primary-btn" id="start-btn">Start</button>
+      <div class="button-row">
+        <button class="primary-btn" id="start-btn">Start</button>
+      </div>
     </section>
 
     <section class="card screen" id="screen-role">
@@ -44,17 +44,17 @@
       <p>Choose your group role for this round of the session.</p>
 
       <div class="role-grid">
-        <button class="role-btn" data-role="best-fit">
+        <button class="role-btn" data-role="best-fit" type="button">
           <span class="role-title">Best Fit</span>
           <span class="role-desc">Choose the strongest match for the implementer’s current need.</span>
         </button>
 
-        <button class="role-btn" data-role="workable">
+        <button class="role-btn" data-role="workable" type="button">
           <span class="role-title">Workable</span>
           <span class="role-desc">Choose an option that could help, but is not the strongest fit.</span>
         </button>
 
-        <button class="role-btn" data-role="mismatch">
+        <button class="role-btn" data-role="mismatch" type="button">
           <span class="role-title">Mismatch</span>
           <span class="role-desc">Choose the least well-matched option for the current need.</span>
         </button>
@@ -65,8 +65,8 @@
       </p>
 
       <div class="button-row">
-        <button class="secondary-btn" data-go="screen-landing">Back</button>
-        <button class="primary-btn" id="begin-scenario-btn" disabled>Begin Scenario</button>
+        <button class="secondary-btn" data-go="screen-landing" type="button">Back</button>
+        <button class="primary-btn" id="begin-scenario-btn" type="button" disabled>Begin Scenario</button>
       </div>
     </section>
 
@@ -79,10 +79,12 @@
           <h3>Teacher</h3>
           <p>Open to support, motivated, overwhelmed in the moment</p>
         </div>
+
         <div class="info-box">
           <h3>Student Context</h3>
           <p>Escalation most likely during transitions</p>
         </div>
+
         <div class="info-box">
           <h3>Current Challenge</h3>
           <p>Plan exists, but implementation is inconsistent</p>
@@ -92,15 +94,15 @@
       <p>
         Ms. Rivera is a general education teacher supporting a student with an individualized,
         function-based behavior support plan. The student has the most difficulty during transitions,
-        especially when independent work ends and the class shifts to a new activity. Ms. Rivera
-        wants to support the student well and is open to coaching, but she says she feels overwhelmed
-        in the moment and has trouble remembering how to use all parts of the plan consistently when
-        the classroom gets busy.
+        especially when independent work ends and the class shifts to a new activity. Ms. Rivera wants
+        to support the student well and is open to coaching, but she says she feels overwhelmed in the
+        moment and has trouble remembering how to use all parts of the plan consistently when the
+        classroom gets busy.
       </p>
 
       <div class="button-row">
-        <button class="secondary-btn" data-go="screen-role">Back</button>
-        <button class="primary-btn" id="to-round-1-btn">What should happen next?</button>
+        <button class="secondary-btn" data-go="screen-role" type="button">Back</button>
+        <button class="primary-btn" id="to-round-1-btn" type="button">What should happen next?</button>
       </div>
     </section>
 
@@ -112,7 +114,7 @@
       <div id="choices-container" class="choices-container"></div>
 
       <div class="button-row">
-        <button class="secondary-btn" id="round-back-btn">Back</button>
+        <button class="secondary-btn" id="round-back-btn" type="button">Back</button>
       </div>
     </section>
 
@@ -123,7 +125,7 @@
       <p id="feedback-text"></p>
 
       <div class="button-row">
-        <button class="primary-btn" id="continue-btn">Continue</button>
+        <button class="primary-btn" id="continue-btn" type="button">Continue</button>
       </div>
     </section>
 
@@ -153,11 +155,11 @@
       </div>
 
       <div class="button-row">
-        <button class="secondary-btn" id="restart-btn">Start Over</button>
+        <button class="secondary-btn" id="restart-btn" type="button">Start Over</button>
       </div>
     </section>
   </main>
 
-  <script src="script.js"></script>
+  <script src="./script.js"></script>
 </body>
 </html>
