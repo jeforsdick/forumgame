@@ -114,10 +114,22 @@ const rounds = [
   }
 ];
 
-const roleLabels = {
-  "best-fit": "Best Fit",
-  workable: "Workable",
-  mismatch: "Mismatch"
+const roleConfigs = {
+  "best-fit": {
+    label: "Best Fit",
+    bodyClass: "lens-best-fit",
+    prompt: "Pick the strongest coaching move for this situation."
+  },
+  workable: {
+    label: "Workable",
+    bodyClass: "lens-workable",
+    prompt: "Pick the option that is not the best fit, but could still be workable."
+  },
+  mismatch: {
+    label: "Mismatch",
+    bodyClass: "lens-mismatch",
+    prompt: "Pick the option that is the most mismatched for this situation."
+  }
 };
 
 const roleRecommendations = {
