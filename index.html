@@ -577,16 +577,16 @@
       background: #c97a74;
     }
 
-    .lens-best-fit #feedback-chip{
+    #screen-feedback.fit-strongest #feedback-chip{
       background:#6f9b77;
     }
 
-    .lens-workable #feedback-chip{
+    #screen-feedback.fit-workable #feedback-chip{
       background:#d4a63d;
       color:#3d2d07;
     }
 
-    .lens-mismatch #feedback-chip{
+    #screen-feedback.fit-mismatch #feedback-chip{
       background:#c97a74;
     }
   </style>
@@ -1063,6 +1063,12 @@
       if (promptEl) promptEl.textContent = config ? config.task : "";
     }
 
+    function getFitClass(fit) {
+      if (fit === "Strongest Fit") return "fit-strongest";
+      if (fit === "Workable Fit") return "fit-workable";
+      return "fit-mismatch";
+    }
+
     function renderBuilderOutput() {
       const type = document.getElementById("builder-type").value;
       const challenge = document.getElementById("builder-challenge").value.trim();
@@ -1195,6 +1201,10 @@ Debrief question: ${debrief || "—"}`;
           });
 
           const config = getRoleConfig();
+          const feedbackScreen = document.getElementById("screen-feedback");
+          feedbackScreen.classList.remove("fit-strongest", "fit-workable", "fit-mismatch");
+          feedbackScreen.classList.add(getFitClass(option.fit));
+
           document.getElementById("feedback-label").textContent = `${round.label} Fit Reveal`;
           document.getElementById("feedback-title").textContent = `Choice ${option.id}: ${option.fit}`;
           document.getElementById("feedback-frame").textContent = config.feedbackIntro;
