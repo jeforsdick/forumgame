@@ -126,42 +126,6 @@
       align-items:center;
     }
 
-    .hero-illustration{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      min-height:110px;
-      position:relative;
-      order:-1;
-    }
-
-    .book-stack{
-      position:absolute;
-      left:14%;
-      bottom:10%;
-      font-size:38px;
-      transform:rotate(-8deg);
-      opacity:.95;
-    }
-    .teacher-emoji{
-      position:absolute;
-      left:8%;
-      top:18%;
-      font-size:62px;
-    }
-    .student-emoji{
-      position:absolute;
-      right:6%;
-      bottom:8%;
-      font-size:66px;
-    }
-    .sparkle{
-      position:absolute;
-      left:34%;
-      top:20%;
-      font-size:26px;
-    }
-
     h1, h2{
       margin:0 0 12px;
       line-height:1;
@@ -525,11 +489,6 @@
         grid-template-columns:repeat(2, minmax(0,1fr));
       }
 
-      .hero-illustration{
-        min-height:260px;
-        order:0;
-      }
-
       .app{
         width:min(980px, calc(100% - 28px));
         margin:24px auto 40px;
@@ -565,10 +524,6 @@
         font-size:3rem;
       }
 
-      .teacher-emoji{ font-size:110px; left:8%; }
-      .student-emoji{ font-size:118px; right:6%; }
-      .book-stack{ font-size:62px; }
-      .sparkle{ font-size:34px; }
     }
 
     @media (min-width: 920px){
@@ -674,12 +629,6 @@
           </div>
         </div>
 
-        <div class="hero-illustration" aria-hidden="true">
-          <div class="teacher-emoji">👩🏻‍🏫</div>
-          <div class="student-emoji">🧑🏻‍🎓</div>
-          <div class="book-stack">📚</div>
-          <div class="sparkle">✨</div>
-        </div>
       </div>
     </section>
 
