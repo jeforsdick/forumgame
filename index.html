@@ -65,17 +65,17 @@
     .app{
       position:relative;
       z-index:1;
-      width:min(980px, calc(100% - 28px));
-      margin:24px auto 40px;
+      width:min(980px, calc(100% - 16px));
+      margin:8px auto 24px;
     }
 
     .screen{
       display:none;
       background:rgba(255,255,255,.62);
       backdrop-filter: blur(6px);
-      border-radius:var(--radius-xl);
+      border-radius:24px;
       box-shadow:var(--shadow);
-      padding:28px;
+      padding:16px;
       position:relative;
       overflow:hidden;
     }
@@ -111,18 +111,18 @@
       display:inline-block;
       background:var(--coral);
       color:white;
-      padding:9px 16px;
+      padding:8px 14px;
       border-radius:999px;
       font-weight:700;
       font-size:.84rem;
       letter-spacing:.02em;
-      margin-bottom:16px;
+      margin-bottom:12px;
     }
 
     .hero{
       display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:18px;
+      grid-template-columns:1fr;
+      gap:14px;
       align-items:center;
     }
 
@@ -130,15 +130,16 @@
       display:flex;
       justify-content:center;
       align-items:center;
-      min-height:260px;
+      min-height:110px;
       position:relative;
+      order:-1;
     }
 
     .book-stack{
       position:absolute;
       left:14%;
       bottom:10%;
-      font-size:62px;
+      font-size:38px;
       transform:rotate(-8deg);
       opacity:.95;
     }
@@ -146,34 +147,34 @@
       position:absolute;
       left:8%;
       top:18%;
-      font-size:110px;
+      font-size:62px;
     }
     .student-emoji{
       position:absolute;
       right:6%;
       bottom:8%;
-      font-size:118px;
+      font-size:66px;
     }
     .sparkle{
       position:absolute;
       left:34%;
       top:20%;
-      font-size:34px;
+      font-size:26px;
     }
 
     h1, h2{
       margin:0 0 12px;
-      line-height:.96;
+      line-height:1;
       color:var(--navy);
       font-weight:900;
-      letter-spacing:-.03em;
+      letter-spacing:0;
     }
     h1{
-      font-size:clamp(2.7rem, 8vw, 5.2rem);
+      font-size:2.25rem;
       max-width:560px;
     }
     h2{
-      font-size:clamp(2rem, 6vw, 3.4rem);
+      font-size:1.85rem;
     }
     h3{
       margin:0 0 8px;
@@ -187,56 +188,57 @@
     }
 
     p{
-      line-height:1.65;
-      margin:0 0 16px;
-      font-size:1.04rem;
+      line-height:1.5;
+      margin:0 0 14px;
+      font-size:1rem;
     }
 
     .subtitle{
-      font-size:1.15rem;
+      font-size:1.05rem;
       color:var(--navy);
       max-width:620px;
     }
 
     .grid-2{
       display:grid;
-      grid-template-columns:repeat(2, minmax(0,1fr));
+      grid-template-columns:1fr;
       gap:16px;
     }
 
     .grid-3{
       display:grid;
-      grid-template-columns:repeat(3, minmax(0,1fr));
-      gap:16px;
+      grid-template-columns:1fr;
+      gap:10px;
     }
 
     .cardy{
       background:#fffaf6;
-      border-radius:24px;
-      padding:18px;
+      border-radius:18px;
+      padding:14px;
       box-shadow: inset 0 0 0 1px rgba(38,77,114,.08);
     }
 
     .avatar-row{
       display:flex;
-      gap:16px;
+      gap:10px;
       flex-wrap:wrap;
-      margin:18px 0 24px;
+      margin:14px 0 18px;
     }
 
     .avatar-card{
       background:#fff8f4;
-      border-radius:24px;
-      padding:18px;
-      min-width:150px;
+      border-radius:18px;
+      padding:12px;
+      min-width:128px;
+      flex:1 1 128px;
       text-align:center;
       box-shadow: inset 0 0 0 1px rgba(223,127,116,.14);
     }
 
     .avatar-circle{
-      width:74px;
-      height:74px;
-      margin:0 auto 10px;
+      width:54px;
+      height:54px;
+      margin:0 auto 8px;
       border-radius:50%;
       background:var(--peach);
       display:flex;
@@ -247,35 +249,38 @@
 
     .role-grid, .choice-grid{
       display:grid;
-      gap:16px;
-      margin:22px 0;
+      gap:12px;
+      margin:16px 0;
     }
 
     .role-grid{
-      grid-template-columns:repeat(3, minmax(0,1fr));
+      grid-template-columns:1fr;
     }
 
     .role-btn, .choice-btn{
       width:100%;
       border:none;
-      border-radius:26px;
-      padding:18px;
+      border-radius:20px;
+      padding:16px;
+      min-height:64px;
       text-align:left;
       background:white;
       color:var(--text);
       box-shadow: inset 0 0 0 1px rgba(38,77,114,.12);
       cursor:pointer;
-      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
-      font-size:1rem;
+      transition:box-shadow .15s ease, background .15s ease;
+      font-size:1.02rem;
     }
 
-    .role-btn:hover, .choice-btn:hover, .primary-btn:hover, .secondary-btn:hover{
-      transform:translateY(-1px);
-    }
-
-    .role-btn.selected{
-      background:#fff0e9;
-      box-shadow: inset 0 0 0 2px var(--coral);
+    .role-btn:focus-visible,
+    .choice-btn:focus-visible,
+    .primary-btn:focus-visible,
+    .secondary-btn:focus-visible,
+    .builder-input:focus-visible,
+    .builder-textarea:focus-visible,
+    .builder-select:focus-visible{
+      outline:3px solid rgba(228,171,78,.72);
+      outline-offset:3px;
     }
 
     .role-title{
@@ -288,14 +293,14 @@
 
     .choice-letter{
       display:inline-flex;
-      width:34px; height:34px;
+      width:38px; height:38px;
       align-items:center;
       justify-content:center;
       border-radius:50%;
       background:var(--peach);
       color:var(--navy);
       font-weight:800;
-      margin-right:12px;
+      margin-right:14px;
       vertical-align:top;
       flex:0 0 auto;
     }
@@ -310,6 +315,7 @@
       border-radius:18px;
       padding:14px 16px;
       color:var(--navy);
+      line-height:1.45;
     }
 
     .pill{
@@ -324,16 +330,22 @@
 
     .button-row{
       display:flex;
+      flex-direction:column;
       gap:12px;
       flex-wrap:wrap;
-      margin-top:24px;
+      margin-top:18px;
+    }
+
+    .button-row .primary-btn,
+    .button-row .secondary-btn{
+      width:100%;
     }
 
     .stack-buttons {
       display: flex;
       flex-direction: column;
       gap: 12px;
-      margin-top: 24px;
+      margin-top: 18px;
     }
 
     .stack-buttons .primary-btn,
@@ -348,10 +360,11 @@
     .primary-btn, .secondary-btn{
       border:none;
       border-radius:999px;
-      padding:14px 22px;
+      padding:16px 22px;
+      min-height:56px;
       font-weight:800;
       cursor:pointer;
-      transition:transform .15s ease, background .15s ease, opacity .15s ease;
+      transition:background .15s ease, opacity .15s ease;
     }
 
     .primary-btn{
@@ -383,23 +396,38 @@
 
     .round-head{
       display:grid;
-      grid-template-columns: 1fr 180px;
-      gap:16px;
+      grid-template-columns:1fr;
+      gap:12px;
       align-items:start;
     }
 
     .mini-board{
       background:var(--navy);
       color:white;
-      border-radius:28px;
-      padding:18px;
+      border-radius:20px;
+      padding:16px;
       align-self:start;
+      order:-1;
     }
 
     .mini-board .small{
       opacity:.85;
       font-size:.9rem;
       margin-bottom:6px;
+    }
+
+    .mini-board strong{
+      display:block;
+      font-size:1.18rem;
+      margin-bottom:8px;
+    }
+
+    .mini-board p{
+      color:inherit;
+      font-size:.95rem;
+      line-height:1.45;
+      margin:0;
+      display:none;
     }
 
     .summary-stack{
@@ -417,8 +445,8 @@
 
     .builder-grid {
       display: grid;
-      gap: 16px;
-      margin-top: 18px;
+      gap: 12px;
+      margin-top: 14px;
     }
 
     .builder-label {
@@ -435,6 +463,7 @@
       border: none;
       border-radius: 18px;
       padding: 14px 16px;
+      min-height: 54px;
       font: inherit;
       color: var(--text);
       background: white;
@@ -442,7 +471,7 @@
     }
 
     .builder-textarea {
-      min-height: 110px;
+      min-height: 92px;
       resize: vertical;
     }
 
@@ -450,6 +479,7 @@
       font-size: .96rem;
       color: var(--navy);
       margin-top: 4px;
+      display:none;
     }
 
     .output-box {
@@ -472,95 +502,138 @@
       margin-top: 8px;
     }
 
-    @media (max-width: 860px){
+    @media (min-width: 760px){
       .hero,
-      .round-head,
+      .round-head{
+        grid-template-columns: 1.2fr .8fr;
+      }
+
+      .round-head .mini-board{
+        order:0;
+      }
+
+      .mini-board p{
+        display:block;
+      }
+
       .grid-3,
       .role-grid{
-        grid-template-columns:1fr;
+        grid-template-columns:repeat(3, minmax(0,1fr));
+      }
+
+      .grid-2{
+        grid-template-columns:repeat(2, minmax(0,1fr));
       }
 
       .hero-illustration{
-        min-height:220px;
-        order:-1;
+        min-height:260px;
+        order:0;
       }
 
-      .teacher-emoji{ font-size:90px; left:4%; }
-      .student-emoji{ font-size:96px; right:2%; }
-      .book-stack{ font-size:52px; }
-    }
-
-    @media (max-width: 640px){
       .app{
-        width:calc(100% - 18px);
-        margin:12px auto 24px;
+        width:min(980px, calc(100% - 28px));
+        margin:24px auto 40px;
       }
 
       .screen{
-        padding:20px;
-        border-radius:26px;
+        padding:28px;
+        border-radius:var(--radius-xl);
+      }
+
+      .builder-textarea {
+        min-height: 110px;
+      }
+
+      .builder-help {
+        display:block;
       }
 
       .button-row{
-        flex-direction:column;
+        flex-direction:row;
       }
 
-      .primary-btn,
-      .secondary-btn{
-        width:100%;
+      .button-row .primary-btn,
+      .button-row .secondary-btn{
+        width:auto;
       }
 
-      .grid-2,
-      .grid-3{
-        grid-template-columns:1fr;
+      h1{
+        font-size:4.4rem;
       }
 
-      .teacher-emoji{ font-size:78px; }
-      .student-emoji{ font-size:82px; }
-      .book-stack{ font-size:46px; }
+      h2{
+        font-size:3rem;
+      }
+
+      .teacher-emoji{ font-size:110px; left:8%; }
+      .student-emoji{ font-size:118px; right:6%; }
+      .book-stack{ font-size:62px; }
+      .sparkle{ font-size:34px; }
+    }
+
+    @media (min-width: 920px){
+      .round-head{
+        grid-template-columns: 1fr 220px;
+      }
     }
 
     .lens-prompt{
-  font-weight: 700;
-  border-radius: 18px;
-  padding: 14px 16px;
-  margin-bottom: 14px;
-}
+      font-weight: 800;
+      border-radius: 18px;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+    }
 
-.lens-best-fit #screen-round .content,
-.lens-best-fit #screen-feedback .content {
-  border-radius: 24px;
-}
+    .role-btn[data-role="best-fit"].selected,
+    .lens-best-fit .lens-prompt{
+      background: #edf7ef;
+      color: #2f5a36;
+      box-shadow: inset 0 0 0 2px rgba(111,155,119,.34);
+    }
 
-.lens-best-fit .mini-board{
-  background: #6f9b77;
-}
+    .role-btn[data-role="workable"].selected,
+    .lens-workable .lens-prompt{
+      background: #fff6dd;
+      color: #7a5b12;
+      box-shadow: inset 0 0 0 2px rgba(212,166,61,.34);
+    }
 
-.lens-best-fit .lens-prompt{
-  background: #edf7ef;
-  color: #2f5a36;
-  box-shadow: inset 0 0 0 1px rgba(111,155,119,.18);
-}
+    .role-btn[data-role="mismatch"].selected,
+    .lens-mismatch .lens-prompt{
+      background: #fdeceb;
+      color: #8a3f39;
+      box-shadow: inset 0 0 0 2px rgba(201,122,116,.34);
+    }
 
-.lens-workable .mini-board{
-  background: #d4a63d;
-}
+    .lens-best-fit .mini-board{
+      background: #6f9b77;
+    }
 
-.lens-workable .lens-prompt{
-  background: #fff6dd;
-  color: #7a5b12;
-  box-shadow: inset 0 0 0 1px rgba(212,166,61,.2);
-}
+    .lens-workable .mini-board{
+      background: #d4a63d;
+      color:#3d2d07;
+    }
 
-.lens-mismatch .mini-board{
-  background: #c97a74;
-}
+    .lens-workable .mini-board .small{
+      opacity:.72;
+    }
 
-.lens-mismatch .lens-prompt{
-  background: #fdeceb;
-  color: #8a3f39;
-  box-shadow: inset 0 0 0 1px rgba(201,122,116,.2);
-}
+    .lens-mismatch .mini-board{
+      background: #c97a74;
+    }
+
+    .lens-best-fit #feedback-chip{
+      background:#6f9b77;
+    }
+
+    .lens-workable #feedback-chip{
+      background:#d4a63d;
+      color:#3d2d07;
+    }
+
+    .lens-mismatch #feedback-chip{
+      background:#c97a74;
+    }
   </style>
 </head>
 <body>
@@ -593,8 +666,7 @@
           </div>
 
           <p>
-            In this session, your group will work through a shared school-based scenario
-            and make decisions from an assigned coaching lens.
+            Your group will use one assigned lens to discuss the same coaching case as everyone else.
           </p>
 
           <div class="button-row">
@@ -618,7 +690,7 @@
           Your Group
           <span class="display-line">Lens</span>
         </h2>
-        <p>Choose your group role for this round of the session.</p>
+        <p>Choose the lens your facilitator assigned to your group.</p>
 
         <div class="role-grid">
           <button class="role-btn" data-role="best-fit" type="button">
@@ -637,7 +709,7 @@
           </button>
         </div>
 
-        <p class="note">Choose based on your group role, not what you personally would do.</p>
+        <p class="note">Your job is to represent this lens during discussion, not to find a personal answer.</p>
 
         <div class="stack-buttons">
           <button class="primary-btn" id="begin-scenario-btn" type="button" disabled>Begin Scenario</button>
@@ -654,7 +726,7 @@
           <span class="display-line">Classroom</span>
         </h2>
 
-        <div class="grid-3" style="margin:20px 0 24px;">
+        <div class="grid-3" style="margin:16px 0 18px;">
           <div class="cardy">
             <h3>Teacher</h3>
             <p>Open to support, motivated, overwhelmed in the moment</p>
@@ -670,15 +742,12 @@
         </div>
 
         <p>
-          Ms. Rivera is a general education teacher supporting a student with an individualized,
-          function-based behavior support plan. The student has the most difficulty during transitions,
-          especially when independent work ends and the class shifts to a new activity. Ms. Rivera wants
-          to support the student well and is open to coaching, but she says she feels overwhelmed in the
-          moment and has trouble remembering how to use all parts of the plan consistently when the classroom gets busy.
+          Ms. Rivera wants to use the student's support plan well, but transitions get busy.
+          In the moment, she has trouble remembering the plan consistently.
         </p>
 
         <div class="stack-buttons">
-          <button class="primary-btn" id="to-round-1-btn" type="button">What should happen next?</button>
+          <button class="primary-btn" id="to-round-1-btn" type="button">Start Decisions</button>
           <button class="secondary-btn" data-go="screen-role" type="button">Back</button>
         </div>
       </div>
@@ -695,7 +764,8 @@
             </div>
           <div class="mini-board">
             <div class="small">Group Lens</div>
-            <div id="role-display">Best Fit</div>
+            <strong id="role-display">Best Fit</strong>
+            <p id="role-task-display"></p>
           </div>
         </div>
 
@@ -711,6 +781,7 @@
       <div class="content">
         <div class="eyebrow" id="feedback-label">Feedback</div>
         <h2 id="feedback-title">Your Path</h2>
+        <p class="note" id="feedback-frame"></p>
         <div class="pill" id="feedback-chip">Best fit for current need</div>
         <p id="feedback-text"></p>
 
@@ -744,15 +815,13 @@
             <ul>
               <li>What made one coaching response a stronger match than another?</li>
               <li>When is a workable support good enough, and when is it not?</li>
-              <li>What signals suggested a need to intensify support?</li>
-              <li>What signals suggested it was not yet time to fade?</li>
-              <li>How could your school build more intentional pathways for educator coaching?</li>
+              <li>What signals showed that support should change?</li>
             </ul>
           </div>
         </div>
 
         <div class="stack-buttons">
-          <button class="primary-btn" id="build-btn" type="button">Build Your Own Gamification Plan</button>
+          <button class="primary-btn" id="build-btn" type="button">Build Mini Activity</button>
           <button class="secondary-btn" id="restart-btn" type="button">Start Over</button>
         </div>
       </div>
@@ -767,8 +836,7 @@
         </h2>
 
         <p>
-          Pick one simple way to gamify coaching in your own context. You do not need to build
-          a full web-based game. Start with one coaching challenge and draft one reusable activity.
+          Draft one quick coaching activity you could adapt after the session.
         </p>
 
         <div class="builder-grid">
@@ -859,34 +927,38 @@
     const rounds = [
       {
         label: "Round 1",
-        title: "What is the best next coaching move for Ms. Rivera right now?",
-        text: "Choose the option that best fits your assigned group lens.",
+        title: "First Coaching Decision",
+        text: "Ms. Rivera wants to support the student well, but the plan is breaking down during the transition routine.",
         options: [
           {
             id: "A",
             text: "Share a general behavior support resource and invite her to a broader staff support session.",
-            tag: "Could help, but not targeted enough",
+            fit: "Workable Fit",
+            tag: "Workable but not ideal",
             feedback:
               "A general resource may be a helpful starting point, but it does not directly address the moment where implementation is breaking down. Ms. Rivera already wants to help. She needs support that is specific, manageable, and tied to the transition routine."
           },
           {
             id: "B",
             text: "Provide targeted prompting and feedback focused on the transition routine where implementation is breaking down.",
-            tag: "Best fit for current need",
+            fit: "Strongest Fit",
+            tag: "Strongest fit for the current need",
             feedback:
               "This option matches the current barrier well. Ms. Rivera is willing and engaged, but she needs support that helps her use the plan more fluently during the exact routine where implementation is slipping."
           },
           {
             id: "C",
             text: "Move immediately to individualized side-by-side classroom coaching across the full school day.",
-            tag: "Could help, but may over-support",
+            fit: "Workable Fit",
+            tag: "Workable, but may over-support",
             feedback:
               "Embedded coaching might be useful later, but moving to the most intensive option right away may not match what the teacher needs at this point. The current issue seems routine-specific, not yet broad enough to require full individualized support across the day."
           },
           {
             id: "D",
             text: "Give the plan more time and check back in two weeks after she has had a chance to try it on her own.",
-            tag: "Misses the current implementation barrier",
+            fit: "Mismatch",
+            tag: "Mismatched with the current barrier",
             feedback:
               "Waiting may unintentionally leave Ms. Rivera without the support she needs during the highest-risk routine. The plan is already in place, and the challenge is not willingness. The challenge is using it effectively in the moment."
           }
@@ -894,12 +966,13 @@
       },
       {
         label: "Round 2",
-        title: "What should happen next?",
+        title: "Adjusting the Support",
         text: "Two weeks later, Ms. Rivera says the support has helped, but implementation still drops during busy transitions when several students need her attention at once.",
         options: [
           {
             id: "A",
             text: "Keep the current support exactly the same and wait for consistency to build over time.",
+            fit: "Workable Fit",
             tag: "Workable, but may not be enough now",
             feedback:
               "Staying the course could help if progress continues, but the data suggest that busy transitions are still a barrier. This may be a point where maintaining the same level of support leaves the teacher stuck just short of fluent implementation."
@@ -907,21 +980,24 @@
           {
             id: "B",
             text: "Intensify to more embedded coaching during the transition routine so support happens in context.",
-            tag: "Best fit for current need",
+            fit: "Strongest Fit",
+            tag: "Strongest fit for the current need",
             feedback:
               "This is the strongest match because the barrier is still happening in the moment during a specific routine. Embedded coaching can help bridge the gap between understanding the plan and using it accurately when the classroom becomes more demanding."
           },
           {
             id: "C",
             text: "Fade support because Ms. Rivera reports feeling more confident.",
-            tag: "Too early to fade",
+            fit: "Mismatch",
+            tag: "Mismatched because it fades too early",
             feedback:
               "Teacher confidence matters, but confidence alone is not enough reason to reduce support. Implementation is still inconsistent in the exact routine that matters most, so fading now may remove support before the practice is stable."
           },
           {
             id: "D",
             text: "Add more written materials and reduce direct coaching time.",
-            tag: "Addresses the wrong problem",
+            fit: "Mismatch",
+            tag: "Mismatched because it targets the wrong problem",
             feedback:
               "Additional written materials may seem helpful, but the issue is not access to information. The issue is real-time use during a complex classroom moment. Reducing direct coaching would likely weaken support right when precision is needed."
           }
@@ -929,26 +1005,29 @@
       },
       {
         label: "Round 3",
-        title: "What support could best build implementation fluency now?",
+        title: "Building Implementation Fluency",
         text: "Ms. Rivera now understands the plan during meetings, but when coaching is not immediately present, she sometimes slips back into older responses. The team wants a support that keeps the plan active between coaching contacts without creating a major time burden.",
         options: [
           {
             id: "A",
             text: "Add a brief scenario-based rehearsal tool with immediate feedback between coaching contacts.",
-            tag: "Best fit for current need",
+            fit: "Strongest Fit",
+            tag: "Strongest fit for fluency practice",
             feedback:
               "This option supports fluency without adding a heavy burden. Ms. Rivera seems to understand the plan conceptually, but still benefits from low-burden rehearsal that keeps the right responses active between coaching contacts."
           },
           {
             id: "B",
             text: "Hold a longer monthly professional development session on individualized behavior supports.",
-            tag: "Could help, but too broad for the current need",
+            fit: "Workable Fit",
+            tag: "Workable, but too broad for the current need",
             feedback:
               "A larger training session may reinforce background knowledge, but it is less likely to strengthen the moment-to-moment fluency Ms. Rivera still needs. The challenge now is not general understanding. It is maintaining accurate use in daily practice."
           },
           {
             id: "C",
             text: "Encourage Ms. Rivera to review the written plan more often on her own.",
+            fit: "Workable Fit",
             tag: "Workable, but weak as a stand-alone support",
             feedback:
               "Reviewing the plan may help as a reminder, but by itself it is unlikely to build the kind of practice-based fluency the teacher needs. The support is too passive for a barrier that shows up in active classroom moments."
@@ -956,7 +1035,8 @@
           {
             id: "D",
             text: "End support now because she has already received coaching and knows the plan.",
-            tag: "Fades support before fluency is stable",
+            fit: "Mismatch",
+            tag: "Mismatched because fluency is not stable yet",
             feedback:
               "This response assumes that knowing the plan means the teacher no longer needs support. In reality, implementation may still benefit from lighter-touch rehearsal and prompts before coaching is fully faded."
           }
@@ -964,25 +1044,34 @@
       }
     ];
 
-    const roleLabels = {
-      "best-fit": "Best Fit",
-      workable: "Workable",
-      mismatch: "Mismatch"
-    };
-
-    const roleRecommendations = {
-      "best-fit": ["B", "B", "A"],
-      workable: ["A", "A", "C"],
-      mismatch: ["D", "D", "D"]
+    const roleConfigs = {
+      "best-fit": {
+        label: "Best Fit",
+        bodyClass: "lens-best-fit",
+        task: "Pick the strongest coaching move for this situation.",
+        feedbackIntro: "Your group was looking for the strongest fit. This choice represents:"
+      },
+      workable: {
+        label: "Workable",
+        bodyClass: "lens-workable",
+        task: "Pick the option that is not the best fit, but could still be workable.",
+        feedbackIntro: "Your group was looking for a workable but not ideal fit. This choice represents:"
+      },
+      mismatch: {
+        label: "Mismatch",
+        bodyClass: "lens-mismatch",
+        task: "Pick the option that is the most mismatched for this situation.",
+        feedbackIntro: "Your group was looking for the most mismatched option. This choice represents:"
+      }
     };
 
     const roleSummaries = {
       "best-fit":
-        "Your group consistently chose supports that matched the implementer’s current need. Across the scenario, the pathway emphasized fit, timing, and the idea that coaching intensity should change as teacher needs change.",
+        "Your group represented the strongest-fit lens.",
       workable:
-        "Your group chose options that could help, but were not always the strongest match for the barrier at hand. This pathway highlights how schools often offer support that is well intentioned but too broad, too passive, or not well timed.",
+        "Your group represented the workable lens.",
       mismatch:
-        "Your group chose options that were least aligned with the teacher’s current barrier. This pathway helps surface common ways support can miss the mark, such as waiting too long, fading too early, or targeting the wrong problem."
+        "Your group represented the mismatch lens."
     };
 
     const builderHelpText = {
@@ -1002,10 +1091,27 @@
       document.getElementById(screenId).classList.add("active");
     }
 
+    function getRoleConfig() {
+      return roleConfigs[gameState.role] || roleConfigs["best-fit"];
+    }
+
+    function updateRoleTheme() {
+      document.body.classList.remove("lens-best-fit", "lens-workable", "lens-mismatch");
+
+      if (gameState.role) {
+        document.body.classList.add(getRoleConfig().bodyClass);
+      }
+    }
+
     function updateRoleDisplay() {
-      const label = gameState.role ? roleLabels[gameState.role] : "Not selected";
-      const el = document.getElementById("role-display");
-      if (el) el.textContent = label;
+      const config = gameState.role ? getRoleConfig() : null;
+      const roleEl = document.getElementById("role-display");
+      const taskEl = document.getElementById("role-task-display");
+      const promptEl = document.getElementById("lens-prompt");
+
+      if (roleEl) roleEl.textContent = config ? config.label : "Not selected";
+      if (taskEl) taskEl.textContent = config ? config.task : "";
+      if (promptEl) promptEl.textContent = config ? config.task : "";
     }
 
     function renderBuilderOutput() {
@@ -1078,6 +1184,7 @@ Debrief question: ${debrief || "—"}`;
         btn.classList.add("selected");
         gameState.role = btn.dataset.role;
         document.getElementById("begin-scenario-btn").disabled = false;
+        updateRoleTheme();
         updateRoleDisplay();
       });
     });
@@ -1133,14 +1240,19 @@ Debrief question: ${debrief || "—"}`;
             round: gameState.currentRound + 1,
             choiceId: option.id,
             text: option.text,
+            fit: option.fit,
             tag: option.tag,
             feedback: option.feedback
           });
 
-          document.getElementById("feedback-label").textContent = round.label + " Feedback";
-          document.getElementById("feedback-title").textContent = `Choice ${option.id}`;
+          const config = getRoleConfig();
+          document.getElementById("feedback-label").textContent = `${round.label} Fit Reveal`;
+          document.getElementById("feedback-title").textContent = `Choice ${option.id}: ${option.fit}`;
+          document.getElementById("feedback-frame").textContent = config.feedbackIntro;
           document.getElementById("feedback-chip").textContent = option.tag;
           document.getElementById("feedback-text").textContent = option.feedback;
+          document.getElementById("continue-btn").textContent =
+            gameState.currentRound < rounds.length - 1 ? "Next Decision" : "Wrap Up";
 
           showScreen("screen-feedback");
         });
@@ -1161,30 +1273,14 @@ Debrief question: ${debrief || "—"}`;
     });
 
     function renderWrapUp() {
-      document.getElementById("final-role").textContent = roleLabels[gameState.role];
+      document.getElementById("final-role").textContent = getRoleConfig().label;
 
-      const expected = roleRecommendations[gameState.role];
-      const selected = gameState.choices.map((choice) => choice.choiceId);
+      const path = gameState.choices
+        .map((choice) => `R${choice.round}: ${choice.choiceId} (${choice.fit.replace(" Fit", "")})`)
+        .join(" · ");
 
-      let pathSentence = roleSummaries[gameState.role];
-
-      if (expected && selected.length === expected.length) {
-        const matchCount = selected.filter((choice, i) => choice === expected[i]).length;
-
-        if (gameState.role === "best-fit" && matchCount < 3) {
-          pathSentence += " Your group explored some alternate pathways too, which should make for a strong debrief discussion.";
-        }
-
-        if (gameState.role === "workable" && matchCount < 2) {
-          pathSentence += " Some of your choices drifted either stronger or weaker than the middle path, which is useful to talk through.";
-        }
-
-        if (gameState.role === "mismatch" && matchCount < 2) {
-          pathSentence += " A few of your choices were less off-track than expected, which is interesting to compare during the share-out.";
-        }
-      }
-
-      document.getElementById("final-summary").textContent = pathSentence;
+      document.getElementById("final-summary").textContent =
+        `${roleSummaries[gameState.role]} Your path: ${path}. Compare with another group.`;
     }
 
     document.getElementById("build-btn").addEventListener("click", () => {
@@ -1218,6 +1314,7 @@ Debrief question: ${debrief || "—"}`;
       gameState.choices = [];
       document.querySelectorAll(".role-btn").forEach((b) => b.classList.remove("selected"));
       document.getElementById("begin-scenario-btn").disabled = true;
+      updateRoleTheme();
       updateRoleDisplay();
       showScreen("screen-landing");
     });
@@ -1228,10 +1325,12 @@ Debrief question: ${debrief || "—"}`;
       gameState.choices = [];
       document.querySelectorAll(".role-btn").forEach((b) => b.classList.remove("selected"));
       document.getElementById("begin-scenario-btn").disabled = true;
+      updateRoleTheme();
       updateRoleDisplay();
       showScreen("screen-landing");
     });
 
+    updateRoleTheme();
     updateRoleDisplay();
   </script>
 </body>
