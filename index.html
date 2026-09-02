@@ -16,1241 +16,272 @@
       --coral-dark:#cb6f64;
       --text:#33424c;
       --white:#ffffff;
+      --green:#6f9b77;
+      --yellow:#d4a63d;
+      --red:#c97a74;
       --shadow:0 18px 42px rgba(38,77,114,.12);
-      --radius-xl:34px;
-      --radius-lg:24px;
-      --radius-md:16px;
     }
-
-    * { box-sizing:border-box; }
-    html, body { margin:0; padding:0; }
-    body{
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height:100vh;
-      overflow-x:hidden;
-      position:relative;
-    }
-
-    .blob{
-      position:fixed;
-      border-radius:50%;
-      z-index:0;
-      pointer-events:none;
-      filter:blur(8px);
-      opacity:.9;
-    }
-    .blob.one{
-      width:360px; height:360px;
-      background:var(--peach);
-      left:-120px; top:-80px;
-    }
-    .blob.two{
-      width:420px; height:420px;
-      background:var(--peach2);
-      right:-140px; top:60px;
-    }
-    .blob.three{
-      width:320px; height:320px;
-      background:#f1ddd3;
-      left:-90px; bottom:-100px;
-    }
-    .blob.four{
-      width:340px; height:340px;
-      background:#f3dfd7;
-      right:-120px; bottom:-120px;
-    }
-
-    .app{
-      position:relative;
-      z-index:1;
-      width:min(980px, calc(100% - 16px));
-      margin:8px auto 24px;
-    }
-
-    .screen{
-      display:none;
-      background:rgba(255,255,255,.62);
-      backdrop-filter: blur(6px);
-      border-radius:24px;
-      box-shadow:var(--shadow);
-      padding:16px;
-      position:relative;
-      overflow:hidden;
-    }
-    .screen.active{ display:block; }
-
-    .screen::before,
-    .screen::after{
-      content:"";
-      position:absolute;
-      border-radius:50%;
-      z-index:0;
-      opacity:.8;
-    }
-    .screen::before{
-      width:220px; height:220px;
-      background:rgba(239,216,205,.55);
-      top:-90px; left:-90px;
-      filter:blur(4px);
-    }
-    .screen::after{
-      width:180px; height:180px;
-      background:rgba(244,227,220,.65);
-      bottom:-70px; right:-70px;
-      filter:blur(4px);
-    }
-
-    .content{
-      position:relative;
-      z-index:1;
-    }
-
-    .eyebrow{
-      display:inline-block;
-      background:var(--coral);
-      color:white;
-      padding:8px 14px;
-      border-radius:999px;
-      font-weight:700;
-      font-size:.84rem;
-      letter-spacing:.02em;
-      margin-bottom:12px;
-    }
-
-    .hero{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:14px;
-      align-items:center;
-    }
-
-    h1, h2{
-      margin:0 0 12px;
-      line-height:1;
-      color:var(--navy);
-      font-weight:900;
-      letter-spacing:0;
-    }
-    h1{
-      font-size:2.25rem;
-      max-width:560px;
-    }
-    h2{
-      font-size:1.85rem;
-    }
-    h3{
-      margin:0 0 8px;
-      color:var(--navy);
-      font-size:1.05rem;
-    }
-
-    .display-line{
-      display:block;
-      color:var(--mustard);
-    }
-
-    p{
-      line-height:1.5;
-      margin:0 0 14px;
-      font-size:1rem;
-    }
-
-    .subtitle{
-      font-size:1.05rem;
-      color:var(--navy);
-      max-width:620px;
-    }
-
-    .grid-2{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:16px;
-    }
-
-    .grid-3{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:10px;
-    }
-
-    .cardy{
-      background:#fffaf6;
-      border-radius:18px;
-      padding:14px;
-      box-shadow: inset 0 0 0 1px rgba(38,77,114,.08);
-    }
-
-    .role-grid, .choice-grid{
-      display:grid;
-      gap:12px;
-      margin:16px 0;
-    }
-
-    .role-grid{
-      grid-template-columns:1fr;
-    }
-
-    .role-btn, .choice-btn{
-      width:100%;
-      border:none;
-      border-radius:20px;
-      padding:16px;
-      min-height:64px;
-      text-align:left;
-      background:white;
-      color:var(--text);
-      box-shadow: inset 0 0 0 1px rgba(38,77,114,.12);
-      cursor:pointer;
-      transition:box-shadow .15s ease, background .15s ease;
-      font-size:1.02rem;
-    }
-
-    .role-btn:focus-visible,
-    .choice-btn:focus-visible,
-    .primary-btn:focus-visible,
-    .secondary-btn:focus-visible,
-    .builder-input:focus-visible,
-    .builder-textarea:focus-visible,
-    .builder-select:focus-visible{
-      outline:3px solid rgba(228,171,78,.72);
-      outline-offset:3px;
-    }
-
-    .role-title{
-      display:block;
-      font-weight:800;
-      color:var(--navy);
-      margin-bottom:8px;
-      font-size:1.08rem;
-    }
-
-    .choice-letter{
-      display:inline-flex;
-      width:38px; height:38px;
-      align-items:center;
-      justify-content:center;
-      border-radius:50%;
-      background:var(--peach);
-      color:var(--navy);
-      font-weight:800;
-      margin-right:14px;
-      vertical-align:top;
-      flex:0 0 auto;
-    }
-
-    .choice-inner{
-      display:flex;
-      align-items:flex-start;
-    }
-
-    .note{
-      background:#fff7f1;
-      border-radius:18px;
-      padding:14px 16px;
-      color:var(--navy);
-      line-height:1.45;
-    }
-
-    .pill{
-      display:inline-block;
-      background:var(--mustard);
-      color:#fff;
-      padding:10px 16px;
-      border-radius:999px;
-      font-weight:800;
-      margin-bottom:16px;
-    }
-
-    .button-row{
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:18px;
-    }
-
-    .button-row .primary-btn,
-    .button-row .secondary-btn{
-      width:100%;
-    }
-
-    .stack-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin-top: 18px;
-    }
-
-    .stack-buttons .primary-btn,
-    .stack-buttons .secondary-btn {
-      width: 100%;
-    }
-
-    button{
-      font:inherit;
-    }
-
-    .primary-btn, .secondary-btn{
-      border:none;
-      border-radius:999px;
-      padding:16px 22px;
-      min-height:56px;
-      font-weight:800;
-      cursor:pointer;
-      transition:background .15s ease, opacity .15s ease;
-    }
-
-    .primary-btn{
-      background:var(--coral);
-      color:white;
-    }
-    .primary-btn:hover{
-      background:var(--coral-dark);
-    }
-    .primary-btn:disabled{
-      opacity:.45;
-      cursor:not-allowed;
-    }
-
-    .secondary-btn{
-      background:var(--navy);
-      color:white;
-    }
-
-    .section-title{
-      max-width:680px;
-    }
-
-    ul{
-      margin:0;
-      padding-left:20px;
-      line-height:1.65;
-    }
-
-    .round-head{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:12px;
-      align-items:start;
-    }
-
-    .mini-board{
-      background:var(--navy);
-      color:white;
-      border-radius:20px;
-      padding:16px;
-      align-self:start;
-      order:-1;
-    }
-
-    .mini-board .small{
-      opacity:.85;
-      font-size:.9rem;
-      margin-bottom:6px;
-    }
-
-    .mini-board strong{
-      display:block;
-      font-size:1.18rem;
-      margin-bottom:8px;
-    }
-
-    .mini-board p{
-      color:inherit;
-      font-size:.95rem;
-      line-height:1.45;
-      margin:0;
-      display:none;
-    }
-
-    .summary-stack{
-      display:grid;
-      gap:16px;
-      margin-top:14px;
-    }
-
-    .tagline{
-      font-size:.95rem;
-      color:var(--navy);
-      font-weight:700;
-      margin-top:4px;
-    }
-
-    .builder-grid {
-      display: grid;
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    .builder-label {
-      display: block;
-      font-weight: 700;
-      color: var(--navy);
-      margin-bottom: 8px;
-    }
-
-    .builder-input,
-    .builder-textarea,
-    .builder-select {
-      width: 100%;
-      border: none;
-      border-radius: 18px;
-      padding: 14px 16px;
-      min-height: 54px;
-      font: inherit;
-      color: var(--text);
-      background: white;
-      box-shadow: inset 0 0 0 1px rgba(38,77,114,.16);
-    }
-
-    .builder-textarea {
-      min-height: 92px;
-      resize: vertical;
-    }
-
-    .builder-help {
-      font-size: .96rem;
-      color: var(--navy);
-      margin-top: 4px;
-      display:none;
-    }
-
-    .output-box {
-      background: #fffaf6;
-      border-radius: 24px;
-      padding: 18px;
-      box-shadow: inset 0 0 0 1px rgba(38,77,114,.08);
-      margin-top: 16px;
-    }
-
-    .output-box h3 {
-      margin-bottom: 10px;
-    }
-
-    .output-box p {
-      margin-bottom: 10px;
-    }
-
-    .output-box ul {
-      margin-top: 8px;
-    }
-
-    @media (min-width: 760px){
-      .hero,
-      .round-head{
-        grid-template-columns: 1.2fr .8fr;
-      }
-
-      .round-head .mini-board{
-        order:0;
-      }
-
-      .mini-board p{
-        display:block;
-      }
-
-      .grid-3,
-      .role-grid{
-        grid-template-columns:repeat(3, minmax(0,1fr));
-      }
-
-      .grid-2{
-        grid-template-columns:repeat(2, minmax(0,1fr));
-      }
-
-      .app{
-        width:min(980px, calc(100% - 28px));
-        margin:24px auto 40px;
-      }
-
-      .screen{
-        padding:28px;
-        border-radius:var(--radius-xl);
-      }
-
-      .builder-textarea {
-        min-height: 110px;
-      }
-
-      .builder-help {
-        display:block;
-      }
-
-      .button-row{
-        flex-direction:row;
-      }
-
-      .button-row .primary-btn,
-      .button-row .secondary-btn{
-        width:auto;
-      }
-
-      h1{
-        font-size:4.4rem;
-      }
-
-      h2{
-        font-size:3rem;
-      }
-
-    }
-
-    @media (min-width: 920px){
-      .round-head{
-        grid-template-columns: 1fr 220px;
-      }
-    }
-
-    .lens-prompt{
-      font-weight: 800;
-      border-radius: 18px;
-      padding: 14px 16px;
-      margin-bottom: 14px;
-    }
-
-    .role-btn[data-role="best-fit"].selected,
-    .lens-best-fit .lens-prompt{
-      background: #edf7ef;
-      color: #2f5a36;
-      box-shadow: inset 0 0 0 2px rgba(111,155,119,.34);
-    }
-
-    .role-btn[data-role="workable"].selected,
-    .lens-workable .lens-prompt{
-      background: #fff6dd;
-      color: #7a5b12;
-      box-shadow: inset 0 0 0 2px rgba(212,166,61,.34);
-    }
-
-    .role-btn[data-role="mismatch"].selected,
-    .lens-mismatch .lens-prompt{
-      background: #fdeceb;
-      color: #8a3f39;
-      box-shadow: inset 0 0 0 2px rgba(201,122,116,.34);
-    }
-
-    .lens-best-fit .mini-board{
-      background: #6f9b77;
-    }
-
-    .lens-workable .mini-board{
-      background: #d4a63d;
-      color:#3d2d07;
-    }
-
-    .lens-workable .mini-board .small{
-      opacity:.72;
-    }
-
-    .lens-mismatch .mini-board{
-      background: #c97a74;
-    }
-
-    #screen-feedback.fit-strongest #feedback-chip{
-      background:#6f9b77;
-    }
-
-    #screen-feedback.fit-workable #feedback-chip{
-      background:#d4a63d;
-      color:#3d2d07;
-    }
-
-    #screen-feedback.fit-mismatch #feedback-chip{
-      background:#c97a74;
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+    .blob{position:fixed;border-radius:50%;z-index:0;pointer-events:none;filter:blur(8px);opacity:.9}
+    .blob.one{width:360px;height:360px;background:var(--peach);left:-120px;top:-80px}
+    .blob.two{width:420px;height:420px;background:var(--peach2);right:-140px;top:60px}
+    .blob.three{width:320px;height:320px;background:#f1ddd3;left:-90px;bottom:-100px}
+    .blob.four{width:340px;height:340px;background:#f3dfd7;right:-120px;bottom:-120px}
+    .app{position:relative;z-index:1;width:min(980px,calc(100% - 16px));margin:8px auto 24px}
+    .screen{display:none;background:rgba(255,255,255,.66);backdrop-filter:blur(6px);border-radius:24px;box-shadow:var(--shadow);padding:16px;position:relative;overflow:hidden}
+    .screen.active{display:block}
+    .content{position:relative;z-index:1}
+    .eyebrow{display:inline-block;background:var(--coral);color:#fff;padding:8px 14px;border-radius:999px;font-weight:700;font-size:.84rem;letter-spacing:.02em;margin-bottom:12px}
+    h1,h2{margin:0 0 12px;line-height:1;color:var(--navy);font-weight:900}
+    h1{font-size:2.25rem;max-width:620px}
+    h2{font-size:1.85rem}
+    h3{margin:0 0 8px;color:var(--navy);font-size:1.05rem}
+    p{line-height:1.5;margin:0 0 14px;font-size:1rem}
+    ul{margin:0;padding-left:20px;line-height:1.65}
+    .display-line{display:block;color:var(--mustard)}
+    .subtitle{font-size:1.05rem;color:var(--navy);max-width:680px}
+    .note{background:#fff7f1;border-radius:18px;padding:14px 16px;color:var(--navy);line-height:1.45}
+    .cardy{background:#fffaf6;border-radius:18px;padding:14px;box-shadow:inset 0 0 0 1px rgba(38,77,114,.08)}
+    .grid-2,.grid-3,.choice-grid,.role-grid,.builder-grid{display:grid;gap:12px}
+    .grid-2,.grid-3,.role-grid{grid-template-columns:1fr}
+    .choice-grid,.role-grid{margin:16px 0}
+    .role-btn,.choice-btn,.decision-btn{width:100%;border:none;border-radius:20px;padding:16px;min-height:64px;text-align:left;background:white;color:var(--text);box-shadow:inset 0 0 0 1px rgba(38,77,114,.12);cursor:pointer;font-size:1.02rem}
+    .role-btn.selected{box-shadow:inset 0 0 0 3px var(--navy)}
+    .role-title{display:block;font-weight:800;color:var(--navy);margin-bottom:8px;font-size:1.08rem}
+    .choice-inner{display:flex;align-items:flex-start;gap:12px}
+    .choice-letter{display:inline-flex;width:38px;height:38px;align-items:center;justify-content:center;border-radius:50%;background:var(--peach);color:var(--navy);font-weight:800;flex:0 0 auto}
+    .button-row,.stack-buttons{display:flex;flex-direction:column;gap:12px;margin-top:18px}
+    button{font:inherit}
+    .primary-btn,.secondary-btn{border:none;border-radius:999px;padding:16px 22px;min-height:56px;font-weight:800;cursor:pointer}
+    .primary-btn{background:var(--coral);color:white}
+    .primary-btn:hover{background:var(--coral-dark)}
+    .primary-btn:disabled{opacity:.45;cursor:not-allowed}
+    .secondary-btn{background:var(--navy);color:white}
+    .role-btn:focus-visible,.choice-btn:focus-visible,.decision-btn:focus-visible,.primary-btn:focus-visible,.secondary-btn:focus-visible,.builder-input:focus-visible,.builder-textarea:focus-visible,.builder-select:focus-visible{outline:3px solid rgba(228,171,78,.72);outline-offset:3px}
+    .mini-board{background:var(--navy);color:white;border-radius:20px;padding:16px;margin-bottom:12px}
+    .mini-board .small{opacity:.85;font-size:.9rem;margin-bottom:6px}
+    .mini-board strong{display:block;font-size:1.18rem;margin-bottom:6px}
+    .lens-prompt{font-weight:800;border-radius:18px;padding:14px 16px;margin-bottom:14px;background:#fff7f1;color:var(--navy)}
+    .progress{display:flex;gap:6px;flex-wrap:wrap;margin:6px 0 16px}
+    .progress span{font-size:.82rem;font-weight:700;padding:7px 10px;border-radius:999px;background:#eee8e2;color:#6b7176}
+    .progress span.active{background:var(--navy);color:white}
+    .pill{display:inline-block;background:var(--mustard);color:#fff;padding:10px 16px;border-radius:999px;font-weight:800;margin-bottom:12px}
+    .mechanism{background:#edf4f8;border-left:5px solid var(--navy);padding:12px 14px;border-radius:12px;margin:12px 0;color:var(--navy);font-weight:700}
+    .fit-strongest .pill{background:var(--green)}
+    .fit-workable .pill{background:var(--yellow);color:#3d2d07}
+    .fit-mismatch .pill{background:var(--red)}
+    .decision-row{display:grid;grid-template-columns:1fr;gap:10px;margin:16px 0}
+    .decision-btn{text-align:center;font-weight:900;color:var(--navy);font-size:1.08rem}
+    .summary-stack{display:grid;gap:14px;margin-top:14px}
+    .builder-label{display:block;font-weight:700;color:var(--navy);margin-bottom:8px}
+    .builder-input,.builder-textarea,.builder-select{width:100%;border:none;border-radius:18px;padding:14px 16px;min-height:54px;font:inherit;color:var(--text);background:white;box-shadow:inset 0 0 0 1px rgba(38,77,114,.16)}
+    .builder-textarea{min-height:92px;resize:vertical}
+    .output-box{background:#fffaf6;border-radius:24px;padding:18px;box-shadow:inset 0 0 0 1px rgba(38,77,114,.08);margin-top:16px}
+    .output-box p{margin-bottom:10px}
+    .small-help{font-size:.92rem;color:#63707a}
+    @media (min-width:760px){
+      .app{width:min(980px,calc(100% - 28px));margin:24px auto 40px}
+      .screen{padding:28px;border-radius:34px}
+      h1{font-size:4.2rem} h2{font-size:3rem}
+      .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .grid-3,.role-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+      .decision-row{grid-template-columns:repeat(3,minmax(0,1fr))}
+      .button-row{flex-direction:row;flex-wrap:wrap}
+      .button-row .primary-btn,.button-row .secondary-btn{width:auto}
+      .mini-board{max-width:260px}
     }
   </style>
 </head>
 <body>
-  <div class="blob one"></div>
-  <div class="blob two"></div>
-  <div class="blob three"></div>
-  <div class="blob four"></div>
-
+  <div class="blob one"></div><div class="blob two"></div><div class="blob three"></div><div class="blob four"></div>
   <main class="app">
+    <section class="screen active" id="screen-landing"><div class="content">
+      <div class="eyebrow">PBIS Leadership Forum</div>
+      <h1>Choose Your <span class="display-line">Coaching Path</span></h1>
+      <p class="subtitle">A live coaching simulation for moving from plan to practice.</p>
+      <p>Your group will follow the same case through one assigned lens. The goal is not to find a single right answer—it is to practice matching support to the actual implementation need.</p>
+      <div class="button-row"><button class="primary-btn" id="start-btn" type="button">Start</button></div>
+    </div></section>
 
-    <section class="screen active" id="screen-landing">
-      <div class="content hero">
-        <div>
-          <div class="eyebrow">PBIS Leadership Forum</div>
-          <h1>
-            Choose Your
-            <span class="display-line">Coaching Path</span>
-          </h1>
-          <p class="subtitle">A live coaching simulation for moving from plan to practice.</p>
-
-          <p>
-            Your group will use one assigned lens to discuss the same coaching case as everyone else.
-          </p>
-
-          <div class="button-row">
-            <button class="primary-btn" id="start-btn" type="button">Start</button>
-          </div>
-        </div>
-
+    <section class="screen" id="screen-role"><div class="content">
+      <div class="eyebrow">Step 1</div>
+      <h2>Your Group <span class="display-line">Lens</span></h2>
+      <p>Choose the lens your facilitator assigned.</p>
+      <div class="role-grid">
+        <button class="role-btn" data-role="best-fit" type="button"><span class="role-title">Best Fit</span><span>Choose the most precise, minimally sufficient support for the current need.</span></button>
+        <button class="role-btn" data-role="workable" type="button"><span class="role-title">Workable</span><span>Choose something that could help, but is broader, less efficient, or less well matched.</span></button>
+        <button class="role-btn" data-role="mismatch" type="button"><span class="role-title">Mismatch</span><span>Choose something that does not address the current implementation barrier.</span></button>
       </div>
-    </section>
+      <p class="note">Represent your assigned lens during discussion—even if it is not the option you would personally choose.</p>
+      <div class="stack-buttons"><button class="primary-btn" id="begin-scenario-btn" type="button" disabled>Meet the Team</button><button class="secondary-btn" data-go="screen-landing" type="button">Back</button></div>
+    </div></section>
 
-    <section class="screen" id="screen-role">
-      <div class="content">
-        <div class="eyebrow">Step 1</div>
-        <h2 class="section-title">
-          Your Group
-          <span class="display-line">Lens</span>
-        </h2>
-        <p>Choose the lens your facilitator assigned to your group.</p>
-
-        <div class="role-grid">
-          <button class="role-btn" data-role="best-fit" type="button">
-            <span class="role-title">Best Fit</span>
-            <span>Choose the strongest match for the implementer’s current need.</span>
-          </button>
-
-          <button class="role-btn" data-role="workable" type="button">
-            <span class="role-title">Workable</span>
-            <span>Choose an option that could help, but is not the strongest fit.</span>
-          </button>
-
-          <button class="role-btn" data-role="mismatch" type="button">
-            <span class="role-title">Mismatch</span>
-            <span>Choose the least well-matched option for the current need.</span>
-          </button>
-        </div>
-
-        <p class="note">Your job is to represent this lens during discussion, not to find a personal answer.</p>
-
-        <div class="stack-buttons">
-          <button class="primary-btn" id="begin-scenario-btn" type="button" disabled>Begin Scenario</button>
-          <button class="secondary-btn" data-go="screen-landing" type="button">Back</button>
-        </div>
+    <section class="screen" id="screen-scenario"><div class="content">
+      <div class="eyebrow">Meet the Team</div>
+      <h2>Ms. Rivera’s <span class="display-line">Classroom</span></h2>
+      <div class="grid-3" style="margin:16px 0 18px">
+        <div class="cardy"><h3>Teacher</h3><p>Motivated, open to support, overwhelmed in the moment</p></div>
+        <div class="cardy"><h3>Student Context</h3><p>Escalation is most likely during transitions</p></div>
+        <div class="cardy"><h3>Current Challenge</h3><p>A function-based plan exists, but implementation is inconsistent</p></div>
       </div>
-    </section>
+      <p>Ms. Rivera can explain the plan and wants to use it well. During busy transitions, though, she sometimes forgets the planned response and falls back on older habits.</p>
+      <div class="stack-buttons"><button class="primary-btn" id="to-barrier-btn" type="button">Start the Case</button><button class="secondary-btn" data-go="screen-role" type="button">Back</button></div>
+    </div></section>
 
-    <section class="screen" id="screen-scenario">
-      <div class="content">
-        <div class="eyebrow">Meet the Team</div>
-        <h2>
-          Ms. Rivera’s
-          <span class="display-line">Classroom</span>
-        </h2>
+    <section class="screen" id="screen-barrier"><div class="content">
+      <div class="eyebrow">Decision 1</div>
+      <h2>Before Coaching: <span class="display-line">What Is the Barrier?</span></h2>
+      <div class="progress"><span class="active">Barrier</span><span>Mechanism</span><span>Intensity</span><span>Data</span><span>Adjust</span></div>
+      <p>Based on what you know so far, what is the strongest explanation for the implementation problem?</p>
+      <div class="choice-grid" id="barrier-choices"></div>
+      <div class="stack-buttons"><button class="secondary-btn" data-go="screen-scenario" type="button">Back</button></div>
+    </div></section>
 
-        <div class="grid-3" style="margin:16px 0 18px;">
-          <div class="cardy">
-            <h3>Teacher</h3>
-            <p>Open to support, motivated, overwhelmed in the moment</p>
-          </div>
-          <div class="cardy">
-            <h3>Student Context</h3>
-            <p>Escalation most likely during transitions</p>
-          </div>
-          <div class="cardy">
-            <h3>Current Challenge</h3>
-            <p>Plan exists, but implementation is inconsistent</p>
-          </div>
-        </div>
+    <section class="screen" id="screen-round"><div class="content">
+      <div class="eyebrow" id="round-label">Round</div>
+      <h2 id="round-title"></h2>
+      <div class="progress" id="round-progress"></div>
+      <div class="mini-board"><div class="small">Your lens</div><strong id="role-display"></strong><p id="role-task-display"></p></div>
+      <p class="lens-prompt" id="lens-prompt"></p>
+      <p id="round-text"></p>
+      <div class="choice-grid" id="choices-container"></div>
+      <div class="stack-buttons"><button class="secondary-btn" id="round-back-btn" type="button">Back</button></div>
+    </div></section>
 
-        <p>
-          Ms. Rivera wants to use the student's support plan well, but transitions get busy.
-          In the moment, she has trouble remembering the plan consistently.
-        </p>
+    <section class="screen" id="screen-feedback"><div class="content">
+      <div class="eyebrow" id="feedback-label">Feedback</div>
+      <h2 id="feedback-title">Your Path</h2>
+      <p class="note" id="feedback-frame"></p>
+      <div class="pill" id="feedback-chip"></div>
+      <p id="feedback-text"></p>
+      <div class="mechanism" id="mechanism-line"></div>
+      <div class="button-row"><button class="primary-btn" id="continue-btn" type="button">Continue</button></div>
+    </div></section>
 
-        <div class="stack-buttons">
-          <button class="primary-btn" id="to-round-1-btn" type="button">Start Decisions</button>
-          <button class="secondary-btn" data-go="screen-role" type="button">Back</button>
-        </div>
+    <section class="screen" id="screen-wrap"><div class="content">
+      <div class="eyebrow">Wrap-Up</div>
+      <h2>How Did Your <span class="display-line">Path Go?</span></h2>
+      <div class="summary-stack">
+        <div class="cardy"><h3>Your Group Lens</h3><p id="final-role"></p></div>
+        <div class="cardy"><h3>Your Path</h3><p id="final-summary"></p></div>
+        <div class="cardy"><h3>Debrief</h3><ul><li>What was the implementation barrier?</li><li>Which coaching mechanism matched it?</li><li>Where did the pathway over-support or under-support?</li><li>What data suggested intensifying, maintaining, or fading?</li><li>Where did contextual fit matter?</li></ul></div>
       </div>
-    </section>
+      <div class="stack-buttons"><button class="primary-btn" id="plan-btn" type="button">Build My Coaching Plan</button><button class="secondary-btn" id="restart-btn" type="button">Start Over</button></div>
+    </div></section>
 
-    <section class="screen" id="screen-round">
-      <div class="content">
-          <div class="round-head">
-            <div>
-              <div class="eyebrow" id="round-label">Round 1</div>
-              <h2 id="round-title">Decision Prompt</h2>
-              <p id="lens-prompt" class="lens-prompt"></p>
-              <p id="round-text"></p>
-            </div>
-          <div class="mini-board">
-            <div class="small">Group Lens</div>
-            <strong id="role-display">Best Fit</strong>
-            <p id="role-task-display"></p>
-          </div>
-        </div>
-
-        <div id="choices-container" class="choice-grid"></div>
-
-        <div class="stack-buttons">
-          <button class="secondary-btn" id="round-back-btn" type="button">Back</button>
-        </div>
+    <section class="screen" id="screen-plan"><div class="content">
+      <div class="eyebrow">Take It to Your Setting</div>
+      <h2>Build Your <span class="display-line">Coaching Plan</span></h2>
+      <p>Think about one real practitioner or team you support.</p>
+      <div class="builder-grid">
+        <div><label class="builder-label" for="plan-barrier">Primary implementation barrier</label><select class="builder-select" id="plan-barrier"><option value="training">Needs training / does not yet know the practice</option><option value="prompting">Knows it but forgets in the moment</option><option value="feedback">Uses it, but inaccurately or inconsistently</option><option value="fluency">Knows it, but breaks down under authentic demands</option><option value="adaptation">The plan/support does not fit the context</option><option value="unknown">Unsure / need more data</option></select></div>
+        <div><label class="builder-label" for="plan-intensity">Starting support</label><select class="builder-select" id="plan-intensity"><option>Brief consultation / targeted support</option><option>Standard or structured coaching</option><option>Embedded / in-class coaching</option><option>Need more information before choosing</option></select></div>
+        <div><label class="builder-label" for="plan-intensify">I will intensify if…</label><textarea class="builder-textarea" id="plan-intensify" placeholder="What would tell you the current support is not enough?"></textarea></div>
+        <div><label class="builder-label" for="plan-fade">I will fade when…</label><textarea class="builder-textarea" id="plan-fade" placeholder="What would show increasing independence and stability?"></textarea></div>
+        <div><label class="builder-label" for="plan-next">My first action when I return…</label><textarea class="builder-textarea" id="plan-next" placeholder="One concrete next step"></textarea></div>
       </div>
-    </section>
+      <div class="stack-buttons"><button class="primary-btn" id="generate-plan-btn" type="button">Generate My Coaching Plan</button><button class="secondary-btn" data-go="screen-wrap" type="button">Back</button></div>
+    </div></section>
 
-    <section class="screen" id="screen-feedback">
-      <div class="content">
-        <div class="eyebrow" id="feedback-label">Feedback</div>
-        <h2 id="feedback-title">Your Path</h2>
-        <p class="note" id="feedback-frame"></p>
-        <div class="pill" id="feedback-chip">Best fit for current need</div>
-        <p id="feedback-text"></p>
+    <section class="screen" id="screen-plan-output"><div class="content">
+      <div class="eyebrow">Your Take-Home Plan</div>
+      <h2>My Coaching <span class="display-line">Next Step</span></h2>
+      <div class="output-box" id="plan-output"></div>
+      <p class="small-help">Screenshot this page if you want to keep your plan handy.</p>
+      <div class="stack-buttons"><button class="primary-btn" id="gamify-btn" type="button">Want to Gamify the Practice?</button><button class="secondary-btn" id="plan-edit-btn" type="button">Edit My Plan</button><button class="secondary-btn" id="plan-home-btn" type="button">Start Over</button></div>
+    </div></section>
 
-        <div class="button-row">
-          <button class="primary-btn" id="continue-btn" type="button">Continue</button>
-        </div>
+    <section class="screen" id="screen-build"><div class="content">
+      <div class="eyebrow">Optional Extension</div>
+      <h2>Gamify the <span class="display-line">Practice</span></h2>
+      <p>Use one simple format to extend practice between coaching contacts.</p>
+      <div class="builder-grid">
+        <div><label class="builder-label" for="builder-type">Choose a format</label><select class="builder-select" id="builder-type"><option value="scenario">Scenario Rehearsal</option><option value="path">Choose Your Path</option><option value="level">Level Up Support</option></select></div>
+        <div><label class="builder-label" for="builder-challenge">Coaching challenge</label><input class="builder-input" id="builder-challenge" type="text" placeholder="A teacher/team is struggling with..." /></div>
+        <div><label class="builder-label" for="builder-context">Setting or routine</label><input class="builder-input" id="builder-context" type="text" placeholder="Transitions, small group, independent work..." /></div>
+        <div><label class="builder-label" for="builder-situation">Situation or data update</label><textarea class="builder-textarea" id="builder-situation" placeholder="Write a short scenario or progress update..."></textarea></div>
+        <div><label class="builder-label" for="builder-a">Option A</label><input class="builder-input" id="builder-a" type="text" placeholder="First response option..." /></div>
+        <div><label class="builder-label" for="builder-b">Option B</label><input class="builder-input" id="builder-b" type="text" placeholder="Second response option..." /></div>
+        <div><label class="builder-label" for="builder-c">Option C</label><input class="builder-input" id="builder-c" type="text" placeholder="Third response option..." /></div>
+        <div><label class="builder-label" for="builder-debrief">Debrief question</label><textarea class="builder-textarea" id="builder-debrief" placeholder="What do you want your team to notice or discuss?"></textarea></div>
       </div>
-    </section>
+      <div class="stack-buttons"><button class="primary-btn" id="generate-builder-btn" type="button">Generate My Practice Activity</button><button class="secondary-btn" data-go="screen-plan-output" type="button">Back to My Coaching Plan</button></div>
+    </div></section>
 
-    <section class="screen" id="screen-wrap">
-      <div class="content">
-        <div class="eyebrow">Wrap-Up</div>
-        <h2>
-          How Did Your
-          <span class="display-line">Path Go?</span>
-        </h2>
-
-        <div class="summary-stack">
-          <div class="cardy">
-            <h3>Your Group Lens</h3>
-            <p id="final-role"></p>
-          </div>
-
-          <div class="cardy">
-            <h3>Your Path Summary</h3>
-            <p id="final-summary"></p>
-          </div>
-
-          <div class="cardy">
-            <h3>Reflect on Your Path</h3>
-            <ul>
-              <li>What made one coaching response a stronger match than another?</li>
-              <li>When is a workable support good enough, and when is it not?</li>
-              <li>What signals showed that support should change?</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="stack-buttons">
-          <button class="primary-btn" id="build-btn" type="button">Build Mini Activity</button>
-          <button class="secondary-btn" id="restart-btn" type="button">Start Over</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="screen" id="screen-build">
-      <div class="content">
-        <div class="eyebrow">Take It With You</div>
-        <h2>
-          Build Your Own
-          <span class="display-line">Gamification Plan</span>
-        </h2>
-
-        <p>
-          Draft one quick coaching activity you could adapt after the session.
-        </p>
-
-        <div class="builder-grid">
-          <div>
-            <label class="builder-label" for="builder-type">Choose a format</label>
-            <select class="builder-select" id="builder-type">
-              <option value="scenario">Scenario Rehearsal</option>
-              <option value="path">Choose the Path</option>
-              <option value="level">Level Up Support</option>
-            </select>
-            <p class="builder-help" id="builder-type-help">
-              Write a short “what would you do next?” case tied to a real teacher, student, or routine.
-            </p>
-          </div>
-
-          <div>
-            <label class="builder-label" for="builder-challenge">Coaching challenge</label>
-            <input class="builder-input" id="builder-challenge" type="text" placeholder="A teacher/team is struggling with..." />
-          </div>
-
-          <div>
-            <label class="builder-label" for="builder-context">Setting or routine</label>
-            <input class="builder-input" id="builder-context" type="text" placeholder="During transitions, small group, independent work..." />
-          </div>
-
-          <div>
-            <label class="builder-label" for="builder-situation">Situation or update</label>
-            <textarea class="builder-textarea" id="builder-situation" placeholder="Write a short scenario or data update..."></textarea>
-          </div>
-
-          <div>
-            <label class="builder-label" for="builder-a">Option A</label>
-            <input class="builder-input" id="builder-a" type="text" placeholder="First response option..." />
-          </div>
-
-          <div>
-            <label class="builder-label" for="builder-b">Option B</label>
-            <input class="builder-input" id="builder-b" type="text" placeholder="Second response option..." />
-          </div>
-
-          <div>
-            <label class="builder-label" for="builder-c">Option C</label>
-            <input class="builder-input" id="builder-c" type="text" placeholder="Third response option..." />
-          </div>
-
-          <div>
-            <label class="builder-label" for="builder-debrief">Debrief question</label>
-            <textarea class="builder-textarea" id="builder-debrief" placeholder="What do you want your team to notice or discuss?"></textarea>
-          </div>
-        </div>
-
-        <div class="stack-buttons">
-          <button class="primary-btn" id="generate-builder-btn" type="button">Generate My Coaching Activity</button>
-          <button class="secondary-btn" id="build-back-btn" type="button">Back</button>
-        </div>
-      </div>
-    </section>
-
-    <section class="screen" id="screen-builder-output">
-      <div class="content">
-        <div class="eyebrow">Your Take-Home Activity</div>
-        <h2>
-          Your Coaching
-          <span class="display-line">Mini Activity</span>
-        </h2>
-
-        <div class="output-box" id="builder-output"></div>
-
-        <div class="stack-buttons">
-          <button class="primary-btn" id="copy-builder-btn" type="button">Copy Text</button>
-          <button class="secondary-btn" id="builder-again-btn" type="button">Build Another</button>
-          <button class="secondary-btn" id="builder-home-btn" type="button">Start Over</button>
-        </div>
-      </div>
-    </section>
-
+    <section class="screen" id="screen-builder-output"><div class="content">
+      <div class="eyebrow">Your Take-Home Activity</div>
+      <h2>Your Coaching <span class="display-line">Practice Activity</span></h2>
+      <div class="output-box" id="builder-output"></div>
+      <div class="stack-buttons"><button class="secondary-btn" id="builder-again-btn" type="button">Edit Activity</button><button class="secondary-btn" id="builder-home-btn" type="button">Start Over</button></div>
+    </div></section>
   </main>
 
   <script>
-    const screens = document.querySelectorAll(".screen");
-
-    const gameState = {
-      role: null,
-      currentRound: 0,
-      choices: []
+    const screens=document.querySelectorAll('.screen');
+    const gameState={role:null,currentRound:0,choices:[],barrier:null};
+    const roleConfigs={
+      'best-fit':{label:'Best Fit',task:'Choose the most precise, minimally sufficient response.'},
+      workable:{label:'Workable',task:'Choose something that could help, but is not the strongest match.'},
+      mismatch:{label:'Mismatch',task:'Choose the option that misses the current barrier most.'}
     };
-
-    const rounds = [
-      {
-        label: "Round 1",
-        title: "First Coaching Decision",
-        text: "Ms. Rivera wants to support the student well, but the plan is breaking down during the transition routine.",
-        options: [
-          {
-            id: "A",
-            text: "Share a general behavior support resource and invite her to a broader staff support session.",
-            fit: "Workable Fit",
-            tag: "Workable but not ideal",
-            feedback:
-              "A general resource may be a helpful starting point, but it does not directly address the moment where implementation is breaking down. Ms. Rivera already wants to help. She needs support that is specific, manageable, and tied to the transition routine."
-          },
-          {
-            id: "B",
-            text: "Provide targeted prompting and feedback focused on the transition routine where implementation is breaking down.",
-            fit: "Strongest Fit",
-            tag: "Strongest fit for the current need",
-            feedback:
-              "This option matches the current barrier well. Ms. Rivera is willing and engaged, but she needs support that helps her use the plan more fluently during the exact routine where implementation is slipping."
-          },
-          {
-            id: "C",
-            text: "Move immediately to individualized side-by-side classroom coaching across the full school day.",
-            fit: "Workable Fit",
-            tag: "Workable, but may over-support",
-            feedback:
-              "Embedded coaching might be useful later, but moving to the most intensive option right away may not match what the teacher needs at this point. The current issue seems routine-specific, not yet broad enough to require full individualized support across the day."
-          },
-          {
-            id: "D",
-            text: "Give the plan more time and check back in two weeks after she has had a chance to try it on her own.",
-            fit: "Mismatch",
-            tag: "Mismatched with the current barrier",
-            feedback:
-              "Waiting may unintentionally leave Ms. Rivera without the support she needs during the highest-risk routine. The plan is already in place, and the challenge is not willingness. The challenge is using it effectively in the moment."
-          }
-        ]
-      },
-      {
-        label: "Round 2",
-        title: "Adjusting the Support",
-        text: "Two weeks later, Ms. Rivera says the support has helped, but implementation still drops during busy transitions when several students need her attention at once.",
-        options: [
-          {
-            id: "A",
-            text: "Keep the current support exactly the same and wait for consistency to build over time.",
-            fit: "Workable Fit",
-            tag: "Workable, but may not be enough now",
-            feedback:
-              "Staying the course could help if progress continues, but the data suggest that busy transitions are still a barrier. This may be a point where maintaining the same level of support leaves the teacher stuck just short of fluent implementation."
-          },
-          {
-            id: "B",
-            text: "Intensify to more embedded coaching during the transition routine so support happens in context.",
-            fit: "Strongest Fit",
-            tag: "Strongest fit for the current need",
-            feedback:
-              "This is the strongest match because the barrier is still happening in the moment during a specific routine. Embedded coaching can help bridge the gap between understanding the plan and using it accurately when the classroom becomes more demanding."
-          },
-          {
-            id: "C",
-            text: "Fade support because Ms. Rivera reports feeling more confident.",
-            fit: "Mismatch",
-            tag: "Mismatched because it fades too early",
-            feedback:
-              "Teacher confidence matters, but confidence alone is not enough reason to reduce support. Implementation is still inconsistent in the exact routine that matters most, so fading now may remove support before the practice is stable."
-          },
-          {
-            id: "D",
-            text: "Add more written materials and reduce direct coaching time.",
-            fit: "Mismatch",
-            tag: "Mismatched because it targets the wrong problem",
-            feedback:
-              "Additional written materials may seem helpful, but the issue is not access to information. The issue is real-time use during a complex classroom moment. Reducing direct coaching would likely weaken support right when precision is needed."
-          }
-        ]
-      },
-      {
-        label: "Round 3",
-        title: "Building Implementation Fluency",
-        text: "Ms. Rivera now understands the plan during meetings, but when coaching is not immediately present, she sometimes slips back into older responses. The team wants a support that keeps the plan active between coaching contacts without creating a major time burden.",
-        options: [
-          {
-            id: "A",
-            text: "Add a brief scenario-based rehearsal tool with immediate feedback between coaching contacts.",
-            fit: "Strongest Fit",
-            tag: "Strongest fit for fluency practice",
-            feedback:
-              "This option supports fluency without adding a heavy burden. Ms. Rivera seems to understand the plan conceptually, but still benefits from low-burden rehearsal that keeps the right responses active between coaching contacts."
-          },
-          {
-            id: "B",
-            text: "Hold a longer monthly professional development session on individualized behavior supports.",
-            fit: "Workable Fit",
-            tag: "Workable, but too broad for the current need",
-            feedback:
-              "A larger training session may reinforce background knowledge, but it is less likely to strengthen the moment-to-moment fluency Ms. Rivera still needs. The challenge now is not general understanding. It is maintaining accurate use in daily practice."
-          },
-          {
-            id: "C",
-            text: "Encourage Ms. Rivera to review the written plan more often on her own.",
-            fit: "Workable Fit",
-            tag: "Workable, but weak as a stand-alone support",
-            feedback:
-              "Reviewing the plan may help as a reminder, but by itself it is unlikely to build the kind of practice-based fluency the teacher needs. The support is too passive for a barrier that shows up in active classroom moments."
-          },
-          {
-            id: "D",
-            text: "End support now because she has already received coaching and knows the plan.",
-            fit: "Mismatch",
-            tag: "Mismatched because fluency is not stable yet",
-            feedback:
-              "This response assumes that knowing the plan means the teacher no longer needs support. In reality, implementation may still benefit from lighter-touch rehearsal and prompts before coaching is fully faded."
-          }
-        ]
-      }
+    const barrierOptions=[
+      {id:'A',text:'Knowledge / training: she does not yet know what the plan requires',fit:'Mismatch',feedback:'Ms. Rivera can already explain the plan, so reteaching the plan is unlikely to address the immediate problem.',mechanism:'Training is not the primary need here.'},
+      {id:'B',text:'Prompting: she knows the plan but does not reliably contact the cue in the moment',fit:'Strongest Fit',feedback:'The current information points most strongly to a remembering-at-the-right-moment problem during transitions.',mechanism:'Primary mechanism to consider: Prompting'},
+      {id:'C',text:'Fluency: she cannot yet respond efficiently under classroom pressure',fit:'Workable Fit',feedback:'Fluency may become part of the problem, but the clearest current signal is that she is forgetting the plan in the moment.',mechanism:'Possible secondary need: Fluency building'},
+      {id:'D',text:'Contextual fit: the plan itself does not fit the classroom routine',fit:'Workable Fit',feedback:'Contextual fit should always be considered, but the current case has not yet shown that the plan itself is unworkable.',mechanism:'Keep contextual fit on the radar as data accumulate.'}
     ];
-
-    const roleConfigs = {
-      "best-fit": {
-        label: "Best Fit",
-        bodyClass: "lens-best-fit",
-        task: "Pick the strongest coaching move for this situation.",
-        feedbackIntro: "Your group was looking for the strongest fit. This choice represents:"
-      },
-      workable: {
-        label: "Workable",
-        bodyClass: "lens-workable",
-        task: "Pick the option that is not the best fit, but could still be workable.",
-        feedbackIntro: "Your group was looking for a workable but not ideal fit. This choice represents:"
-      },
-      mismatch: {
-        label: "Mismatch",
-        bodyClass: "lens-mismatch",
-        task: "Pick the option that is the most mismatched for this situation.",
-        feedbackIntro: "Your group was looking for the most mismatched option. This choice represents:"
-      }
-    };
-
-    const roleSummaries = {
-      "best-fit":
-        "Your group represented the strongest-fit lens.",
-      workable:
-        "Your group represented the workable lens.",
-      mismatch:
-        "Your group represented the mismatch lens."
-    };
-
-    const builderHelpText = {
-      scenario: "Write a short “what would you do next?” case tied to a real teacher, student, or routine.",
-      path: "Draft a branching discussion with stronger and weaker coaching choices.",
-      level: "Use a quick data update and ask whether support should intensify, stay the same, or fade."
-    };
-
-    function formatBuilderLabel(type) {
-      if (type === "scenario") return "Scenario Rehearsal";
-      if (type === "path") return "Choose the Path";
-      return "Level Up Support";
-    }
-
-    function showScreen(screenId) {
-      screens.forEach((screen) => screen.classList.remove("active"));
-      document.getElementById(screenId).classList.add("active");
-    }
-
-    function getRoleConfig() {
-      return roleConfigs[gameState.role] || roleConfigs["best-fit"];
-    }
-
-    function updateRoleTheme() {
-      document.body.classList.remove("lens-best-fit", "lens-workable", "lens-mismatch");
-
-      if (gameState.role) {
-        document.body.classList.add(getRoleConfig().bodyClass);
-      }
-    }
-
-    function updateRoleDisplay() {
-      const config = gameState.role ? getRoleConfig() : null;
-      const roleEl = document.getElementById("role-display");
-      const taskEl = document.getElementById("role-task-display");
-      const promptEl = document.getElementById("lens-prompt");
-
-      if (roleEl) roleEl.textContent = config ? config.label : "Not selected";
-      if (taskEl) taskEl.textContent = config ? config.task : "";
-      if (promptEl) promptEl.textContent = config ? config.task : "";
-    }
-
-    function getFitClass(fit) {
-      if (fit === "Strongest Fit") return "fit-strongest";
-      if (fit === "Workable Fit") return "fit-workable";
-      return "fit-mismatch";
-    }
-
-    function renderBuilderOutput() {
-      const type = document.getElementById("builder-type").value;
-      const challenge = document.getElementById("builder-challenge").value.trim();
-      const context = document.getElementById("builder-context").value.trim();
-      const situation = document.getElementById("builder-situation").value.trim();
-      const optionA = document.getElementById("builder-a").value.trim();
-      const optionB = document.getElementById("builder-b").value.trim();
-      const optionC = document.getElementById("builder-c").value.trim();
-      const debrief = document.getElementById("builder-debrief").value.trim();
-
-      const output = document.getElementById("builder-output");
-
-      output.innerHTML = `
-        <h3>${formatBuilderLabel(type)}</h3>
-        <p><strong>Coaching challenge:</strong> ${challenge || "—"}</p>
-        <p><strong>Setting or routine:</strong> ${context || "—"}</p>
-        <p><strong>Situation or update:</strong> ${situation || "—"}</p>
-        <p><strong>Response options:</strong></p>
-        <ul>
-          <li><strong>A:</strong> ${optionA || "—"}</li>
-          <li><strong>B:</strong> ${optionB || "—"}</li>
-          <li><strong>C:</strong> ${optionC || "—"}</li>
-        </ul>
-        <p style="margin-top:12px;"><strong>Debrief question:</strong> ${debrief || "—"}</p>
-      `;
-    }
-
-    function copyBuilderText() {
-      const type = document.getElementById("builder-type").value;
-      const challenge = document.getElementById("builder-challenge").value.trim();
-      const context = document.getElementById("builder-context").value.trim();
-      const situation = document.getElementById("builder-situation").value.trim();
-      const optionA = document.getElementById("builder-a").value.trim();
-      const optionB = document.getElementById("builder-b").value.trim();
-      const optionC = document.getElementById("builder-c").value.trim();
-      const debrief = document.getElementById("builder-debrief").value.trim();
-
-      const text = `${formatBuilderLabel(type)}
-
-Coaching challenge: ${challenge || "—"}
-Setting or routine: ${context || "—"}
-Situation or update: ${situation || "—"}
-
-Response options:
-A: ${optionA || "—"}
-B: ${optionB || "—"}
-C: ${optionC || "—"}
-
-Debrief question: ${debrief || "—"}`;
-
-      navigator.clipboard.writeText(text).then(() => {
-        const btn = document.getElementById("copy-builder-btn");
-        const original = btn.textContent;
-        btn.textContent = "Copied!";
-        setTimeout(() => {
-          btn.textContent = original;
-        }, 1200);
-      });
-    }
-
-    document.getElementById("start-btn").addEventListener("click", () => {
-      showScreen("screen-role");
-    });
-
-    document.querySelectorAll(".role-btn").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        document.querySelectorAll(".role-btn").forEach((b) => b.classList.remove("selected"));
-        btn.classList.add("selected");
-        gameState.role = btn.dataset.role;
-        document.getElementById("begin-scenario-btn").disabled = false;
-        updateRoleTheme();
-        updateRoleDisplay();
-      });
-    });
-
-    document.getElementById("begin-scenario-btn").addEventListener("click", () => {
-      showScreen("screen-scenario");
-    });
-
-    document.querySelectorAll("[data-go]").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        showScreen(btn.dataset.go);
-      });
-    });
-
-    document.getElementById("to-round-1-btn").addEventListener("click", () => {
-      gameState.currentRound = 0;
-      renderRound();
-      showScreen("screen-round");
-    });
-
-    document.getElementById("round-back-btn").addEventListener("click", () => {
-      if (gameState.currentRound === 0) {
-        showScreen("screen-scenario");
-      } else {
-        renderRound();
-        showScreen("screen-round");
-      }
-    });
-
-    function renderRound() {
-      const round = rounds[gameState.currentRound];
-      document.getElementById("round-label").textContent = round.label;
-      document.getElementById("round-title").textContent = round.title;
-      document.getElementById("round-text").textContent = round.text;
-      updateRoleDisplay();
-
-      const container = document.getElementById("choices-container");
-      container.innerHTML = "";
-
-      round.options.forEach((option) => {
-        const button = document.createElement("button");
-        button.className = "choice-btn";
-        button.type = "button";
-        button.innerHTML = `
-          <div class="choice-inner">
-            <span class="choice-letter">${option.id}</span>
-            <span>${option.text}</span>
-          </div>
-        `;
-
-        button.addEventListener("click", () => {
-          gameState.choices.push({
-            round: gameState.currentRound + 1,
-            choiceId: option.id,
-            text: option.text,
-            fit: option.fit,
-            tag: option.tag,
-            feedback: option.feedback
-          });
-
-          const config = getRoleConfig();
-          const feedbackScreen = document.getElementById("screen-feedback");
-          feedbackScreen.classList.remove("fit-strongest", "fit-workable", "fit-mismatch");
-          feedbackScreen.classList.add(getFitClass(option.fit));
-
-          document.getElementById("feedback-label").textContent = `${round.label} Fit Reveal`;
-          document.getElementById("feedback-title").textContent = `Choice ${option.id}: ${option.fit}`;
-          document.getElementById("feedback-frame").textContent = config.feedbackIntro;
-          document.getElementById("feedback-chip").textContent = option.tag;
-          document.getElementById("feedback-text").textContent = option.feedback;
-          document.getElementById("continue-btn").textContent =
-            gameState.currentRound < rounds.length - 1 ? "Next Decision" : "Wrap Up";
-
-          showScreen("screen-feedback");
-        });
-
-        container.appendChild(button);
-      });
-    }
-
-    document.getElementById("continue-btn").addEventListener("click", () => {
-      if (gameState.currentRound < rounds.length - 1) {
-        gameState.currentRound += 1;
-        renderRound();
-        showScreen("screen-round");
-      } else {
-        renderWrapUp();
-        showScreen("screen-wrap");
-      }
-    });
-
-    function renderWrapUp() {
-      document.getElementById("final-role").textContent = getRoleConfig().label;
-
-      const path = gameState.choices
-        .map((choice) => `R${choice.round}: ${choice.choiceId} (${choice.fit.replace(" Fit", "")})`)
-        .join(" · ");
-
-      document.getElementById("final-summary").textContent =
-        `${roleSummaries[gameState.role]} Your path: ${path}. Compare with another group.`;
-    }
-
-    document.getElementById("build-btn").addEventListener("click", () => {
-      showScreen("screen-build");
-    });
-
-    document.getElementById("build-back-btn").addEventListener("click", () => {
-      showScreen("screen-wrap");
-    });
-
-    document.getElementById("builder-type").addEventListener("change", (e) => {
-      document.getElementById("builder-type-help").textContent = builderHelpText[e.target.value];
-    });
-
-    document.getElementById("generate-builder-btn").addEventListener("click", () => {
-      renderBuilderOutput();
-      showScreen("screen-builder-output");
-    });
-
-    document.getElementById("copy-builder-btn").addEventListener("click", () => {
-      copyBuilderText();
-    });
-
-    document.getElementById("builder-again-btn").addEventListener("click", () => {
-      showScreen("screen-build");
-    });
-
-    document.getElementById("builder-home-btn").addEventListener("click", () => {
-      gameState.role = null;
-      gameState.currentRound = 0;
-      gameState.choices = [];
-      document.querySelectorAll(".role-btn").forEach((b) => b.classList.remove("selected"));
-      document.getElementById("begin-scenario-btn").disabled = true;
-      updateRoleTheme();
-      updateRoleDisplay();
-      showScreen("screen-landing");
-    });
-
-    document.getElementById("restart-btn").addEventListener("click", () => {
-      gameState.role = null;
-      gameState.currentRound = 0;
-      gameState.choices = [];
-      document.querySelectorAll(".role-btn").forEach((b) => b.classList.remove("selected"));
-      document.getElementById("begin-scenario-btn").disabled = true;
-      updateRoleTheme();
-      updateRoleDisplay();
-      showScreen("screen-landing");
-    });
-
-    updateRoleTheme();
-    updateRoleDisplay();
+    const rounds=[
+      {label:'Round 1',stage:'Mechanism',title:'What coaching response fits right now?',text:'Ms. Rivera knows the plan but forgets the response during the transition routine.',options:[
+        {id:'A',text:'Share a general behavior resource and invite her to a broader staff support session.',fit:'Workable Fit',tag:'Could help, but too broad',feedback:'This may add useful information, but it does not precisely target the implementation moment that is breaking down.',mechanism:'Mechanism match: weak. The current barrier points more directly to prompting.'},
+        {id:'B',text:'Add a brief, routine-specific prompt and targeted feedback during the transition.',fit:'Strongest Fit',tag:'Most precise match',feedback:'This is minimally sufficient and directly tied to the current barrier: remembering the plan at the moment it is needed.',mechanism:'Primary coaching mechanism: Prompting, with targeted performance feedback as needed.'},
+        {id:'C',text:'Move immediately to full-day side-by-side coaching.',fit:'Workable Fit',tag:'Could help, but may over-support',feedback:'Embedded coaching may eventually be useful, but the current problem is narrow and routine-specific. Starting with maximum intensity is not yet necessary.',mechanism:'Intensity is higher than the current data require.'},
+        {id:'D',text:'Wait two weeks and see whether she improves on her own.',fit:'Mismatch',tag:'Leaves the barrier unaddressed',feedback:'The plan is already in place and the barrier is already visible. Waiting does not provide the cue she currently needs.',mechanism:'The implementation barrier remains unsupported.'}
+      ]},
+      {label:'Round 2',stage:'Intensity',title:'What should happen to the support?',text:'Two weeks later, remembering has improved. Fidelity is better overall, but implementation still drops during the busiest transition when several students need attention.',options:[
+        {id:'A',text:'MAINTAIN the current prompt-only support.',fit:'Workable Fit',tag:'Reasonable, but may leave a persistent gap',feedback:'Progress is occurring, so maintaining could be defensible. But the same routine still shows a predictable breakdown under high demand.',mechanism:'Current data suggest a new need may be emerging: fluency under authentic demands.'},
+        {id:'B',text:'INTENSIFY selectively during that transition with modeling, rehearsal, and in-context feedback.',fit:'Strongest Fit',tag:'Best fit for the new barrier',feedback:'The support becomes more intensive only where the data show it is needed. This preserves efficiency while addressing performance under pressure.',mechanism:'Mechanisms added: Fluency building + Performance feedback.'},
+        {id:'C',text:'FADE because Ms. Rivera reports feeling more confident.',fit:'Mismatch',tag:'Too early to fade',feedback:'Confidence is useful social-validity information, but fidelity is still unstable in the routine that matters most.',mechanism:'Do not fade on confidence alone; pair practitioner feedback with implementation and student data.'},
+        {id:'D',text:'Add more written materials but reduce direct coaching.',fit:'Mismatch',tag:'Targets the wrong problem',feedback:'The issue is not access to information. It is performance under authentic classroom demands.',mechanism:'More information is not the same as more effective implementation support.'}
+      ]},
+      {label:'Round 3',stage:'Fit',title:'What if the plan itself becomes the barrier?',text:'A new intervention step is added that requires Ms. Rivera to complete a separate tracking form every five minutes during instruction. Fidelity immediately drops, and she says the added step is not feasible while teaching.',options:[
+        {id:'A',text:'Increase reminders so she completes the form more consistently.',fit:'Mismatch',tag:'More prompting does not solve poor fit',feedback:'If the requirement is not feasible in the routine, reminding her more often simply increases contact with an unworkable expectation.',mechanism:'Primary need: Adaptation / contextual-fit problem solving.'},
+        {id:'B',text:'Increase performance feedback until fidelity reaches criterion.',fit:'Mismatch',tag:'Feedback targets the wrong barrier',feedback:'Feedback can improve accuracy, but it cannot make an intervention step feasible if the design conflicts with classroom demands.',mechanism:'Primary need: Adaptation / contextual-fit problem solving.'},
+        {id:'C',text:'Adapt the data-collection step with the team so it still provides useful information but fits the routine.',fit:'Strongest Fit',tag:'Fix the support, not just the implementer',feedback:'This response treats contextual fit as part of implementation quality. The goal is a plan that can actually be sustained in the setting.',mechanism:'Primary coaching mechanism: Adaptation / problem solving.'},
+        {id:'D',text:'Move to more intensive in-class coaching without changing the plan.',fit:'Workable Fit',tag:'Could support implementation, but misses fit',feedback:'Embedded coaching might temporarily help, but it does not address the fact that the new step is poorly matched to the classroom routine.',mechanism:'Intensity alone cannot compensate indefinitely for poor contextual fit.'}
+      ]},
+      {label:'Round 4',stage:'Adjust',title:'Now what?',text:'Several weeks later, Ms. Rivera implements the revised plan accurately across transitions. Student behavior is improving, and she reports that she can use the strategies independently.',options:[
+        {id:'A',text:'INTENSIFY to protect the gains.',fit:'Mismatch',tag:'Unnecessary intensity',feedback:'More support is not automatically better. Current data show stable implementation and improving outcomes.',mechanism:'The coaching goal is independence, not permanent contact.'},
+        {id:'B',text:'MAINTAIN the same coaching dosage indefinitely.',fit:'Workable Fit',tag:'Safe, but may create unnecessary dependence',feedback:'Maintaining support may feel safe, but the current data suggest the practitioner is ready for less direct coaching.',mechanism:'Use data to reduce support while continuing light monitoring.'},
+        {id:'C',text:'FADE coaching gradually while monitoring fidelity, student response, and practitioner feedback.',fit:'Strongest Fit',tag:'Right support at the right time',feedback:'Stable fidelity, improving student outcomes, and practitioner independence are appropriate signals for planned fading.',mechanism:'Decision rule: Fade while monitoring for maintenance.'},
+        {id:'D',text:'End all support and monitoring immediately.',fit:'Workable Fit',tag:'Directionally right, but abrupt',feedback:'Reducing support is appropriate, but a planned fade with light monitoring is more responsive than stopping everything at once.',mechanism:'Fading should be deliberate and data-informed.'}
+      ]}
+    ];
+    function showScreen(id){screens.forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+    function fitClass(fit){if(fit==='Strongest Fit')return'fit-strongest';if(fit==='Workable Fit')return'fit-workable';return'fit-mismatch';}
+    function role(){return roleConfigs[gameState.role]||roleConfigs['best-fit'];}
+    function progress(stage){const stages=['Barrier','Mechanism','Intensity','Fit','Adjust'];return stages.map(s=>`<span class="${s===stage?'active':''}">${s}</span>`).join('');}
+    document.getElementById('start-btn').addEventListener('click',()=>showScreen('screen-role'));
+    document.querySelectorAll('[data-go]').forEach(btn=>btn.addEventListener('click',()=>showScreen(btn.dataset.go)));
+    document.querySelectorAll('.role-btn').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.role-btn').forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');gameState.role=btn.dataset.role;document.getElementById('begin-scenario-btn').disabled=false;}));
+    document.getElementById('begin-scenario-btn').addEventListener('click',()=>showScreen('screen-scenario'));
+    document.getElementById('to-barrier-btn').addEventListener('click',()=>renderBarrier());
+    function renderBarrier(){const box=document.getElementById('barrier-choices');box.innerHTML='';barrierOptions.forEach(o=>{const b=document.createElement('button');b.className='choice-btn';b.type='button';b.innerHTML=`<div class="choice-inner"><span class="choice-letter">${o.id}</span><span>${o.text}</span></div>`;b.addEventListener('click',()=>{gameState.barrier=o.id;showFeedback('Barrier Check',`Choice ${o.id}: ${o.fit}`,o.fit,o.fit==='Strongest Fit'?'Strongest interpretation of the current data':o.fit==='Workable Fit'?'Plausible, but not the clearest current explanation':'Does not fit the information we have',o.feedback,o.mechanism,()=>{gameState.currentRound=0;renderRound();showScreen('screen-round');});});box.appendChild(b);});showScreen('screen-barrier');}
+    function renderRound(){const r=rounds[gameState.currentRound];document.getElementById('round-label').textContent=r.label;document.getElementById('round-title').textContent=r.title;document.getElementById('round-text').textContent=r.text;document.getElementById('role-display').textContent=role().label;document.getElementById('role-task-display').textContent=role().task;document.getElementById('lens-prompt').textContent=role().task;document.getElementById('round-progress').innerHTML=progress(r.stage);const box=document.getElementById('choices-container');box.innerHTML='';r.options.forEach(o=>{const b=document.createElement('button');b.className='choice-btn';b.type='button';b.innerHTML=`<div class="choice-inner"><span class="choice-letter">${o.id}</span><span>${o.text}</span></div>`;b.addEventListener('click',()=>{gameState.choices[gameState.currentRound]={round:gameState.currentRound+1,id:o.id,fit:o.fit};const intro=role().label==='Best Fit'?'Your group is looking for the strongest match.':role().label==='Workable'?'Your group is looking for a plausible but not ideal response.':'Your group is looking for the most mismatched response.';showFeedback(`${r.label} Fit Reveal`,`Choice ${o.id}: ${o.fit}`,o.fit,intro,o.feedback,o.mechanism,()=>{if(gameState.currentRound<rounds.length-1){gameState.currentRound++;renderRound();showScreen('screen-round');}else{renderWrap();showScreen('screen-wrap');}});});box.appendChild(b);});}
+    function showFeedback(label,title,fit,frame,text,mechanism,next){const s=document.getElementById('screen-feedback');s.classList.remove('fit-strongest','fit-workable','fit-mismatch');s.classList.add(fitClass(fit));document.getElementById('feedback-label').textContent=label;document.getElementById('feedback-title').textContent=title;document.getElementById('feedback-frame').textContent=frame;document.getElementById('feedback-chip').textContent=fit;document.getElementById('feedback-text').textContent=text;document.getElementById('mechanism-line').textContent=mechanism;const c=document.getElementById('continue-btn');c.onclick=next;showScreen('screen-feedback');}
+    document.getElementById('round-back-btn').addEventListener('click',()=>{if(gameState.currentRound===0){showScreen('screen-barrier');return;}gameState.currentRound--;renderRound();showScreen('screen-round');});
+    function renderWrap(){document.getElementById('final-role').textContent=role().label;const path=gameState.choices.filter(Boolean).map(c=>`R${c.round}: ${c.id} (${c.fit.replace(' Fit','')})`).join(' · ');document.getElementById('final-summary').textContent=`${path}. Compare your path with another lens during the share-out.`;}
+    function reset(){gameState.role=null;gameState.currentRound=0;gameState.choices=[];gameState.barrier=null;document.querySelectorAll('.role-btn').forEach(b=>b.classList.remove('selected'));document.getElementById('begin-scenario-btn').disabled=true;showScreen('screen-landing');}
+    document.getElementById('restart-btn').addEventListener('click',reset);document.getElementById('plan-home-btn').addEventListener('click',reset);document.getElementById('builder-home-btn').addEventListener('click',reset);
+    document.getElementById('plan-btn').addEventListener('click',()=>showScreen('screen-plan'));
+    const mechanismMap={training:'Training / initial instruction',prompting:'Prompting',feedback:'Performance feedback',fluency:'Fluency building + performance feedback',adaptation:'Adaptation / contextual-fit problem solving',unknown:'Collect more implementation data before prescribing support'};
+    document.getElementById('generate-plan-btn').addEventListener('click',()=>{const barrier=document.getElementById('plan-barrier');const barrierText=barrier.options[barrier.selectedIndex].text;const key=barrier.value;const intensity=document.getElementById('plan-intensity').value;const intensify=document.getElementById('plan-intensify').value.trim()||'—';const fade=document.getElementById('plan-fade').value.trim()||'—';const next=document.getElementById('plan-next').value.trim()||'—';document.getElementById('plan-output').innerHTML=`<p><strong>Implementation barrier:</strong> ${barrierText}</p><p><strong>Mechanism to consider:</strong> ${mechanismMap[key]}</p><p><strong>Starting support:</strong> ${intensity}</p><p><strong>Intensify if:</strong> ${intensify}</p><p><strong>Fade when:</strong> ${fade}</p><p><strong>First action:</strong> ${next}</p>`;document.getElementById('builder-challenge').value=barrierText;showScreen('screen-plan-output');});
+    document.getElementById('plan-edit-btn').addEventListener('click',()=>showScreen('screen-plan'));
+    document.getElementById('gamify-btn').addEventListener('click',()=>showScreen('screen-build'));
+    function formatType(v){return v==='scenario'?'Scenario Rehearsal':v==='path'?'Choose Your Path':'Level Up Support';}
+    document.getElementById('generate-builder-btn').addEventListener('click',()=>{const type=document.getElementById('builder-type').value;const challenge=document.getElementById('builder-challenge').value.trim()||'—';const context=document.getElementById('builder-context').value.trim()||'—';const situation=document.getElementById('builder-situation').value.trim()||'—';const a=document.getElementById('builder-a').value.trim()||'—';const b=document.getElementById('builder-b').value.trim()||'—';const c=document.getElementById('builder-c').value.trim()||'—';const d=document.getElementById('builder-debrief').value.trim()||'—';document.getElementById('builder-output').innerHTML=`<h3>${formatType(type)}</h3><p><strong>Coaching challenge:</strong> ${challenge}</p><p><strong>Setting/routine:</strong> ${context}</p><p><strong>Situation/update:</strong> ${situation}</p><p><strong>Choices:</strong></p><ul><li><strong>A:</strong> ${a}</li><li><strong>B:</strong> ${b}</li><li><strong>C:</strong> ${c}</li></ul><p style="margin-top:12px"><strong>Debrief:</strong> ${d}</p>`;showScreen('screen-builder-output');});
+    document.getElementById('builder-again-btn').addEventListener('click',()=>showScreen('screen-build'));
   </script>
 </body>
 </html>
