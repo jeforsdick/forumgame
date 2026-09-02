@@ -142,12 +142,58 @@
       .button-row .primary-btn,.button-row .secondary-btn{width:auto!important;}
     }
     @media(max-width:759px){
-      .button-row,.stack-buttons{gap:10px!important;}
-      .button-row .primary-btn,.button-row .secondary-btn,.stack-buttons .primary-btn,.stack-buttons .secondary-btn{width:100%!important;}
-      .screen{padding:20px!important;}
-      h1{font-size:2.35rem!important;}
-      h2{font-size:1.9rem!important;}
-      .forum-footer{text-align:left;}
+      html,body{background:#fff!important;}
+      body{padding:0!important;}
+      .app{width:100%!important;margin:0!important;}
+      .screen{
+        border-width:4px 0 0!important;
+        border-radius:0!important;
+        box-shadow:none!important;
+        padding:16px 16px 22px!important;
+        min-height:100vh!important;
+      }
+      .content{max-width:100%!important;}
+      h1{font-size:2.15rem!important;line-height:1.06!important;margin-bottom:10px!important;}
+      h2{font-size:1.72rem!important;line-height:1.1!important;margin-bottom:10px!important;}
+      h3{font-size:1.02rem!important;}
+      p,li{font-size:1rem!important;line-height:1.45!important;}
+      .subtitle{font-size:1rem!important;line-height:1.4!important;}
+      .eyebrow{font-size:.7rem!important;padding:5px 9px!important;margin-bottom:10px!important;}
+      .session-meta{font-size:.82rem!important;line-height:1.4!important;padding:9px 0!important;margin:12px 0 14px!important;}
+      .cardy{padding:12px!important;border-radius:6px!important;}
+      .grid-3,.grid-2{gap:9px!important;}
+      .role-grid,.choice-grid{gap:9px!important;margin:12px 0!important;}
+      .role-btn,.choice-btn{padding:13px 14px!important;min-height:58px!important;border-radius:7px!important;font-size:1rem!important;}
+      .role-title{font-size:1.02rem!important;margin-bottom:5px!important;}
+      .choice-inner{gap:10px!important;}
+      .choice-letter{width:34px!important;height:34px!important;font-size:.95rem!important;}
+      .button-row,.stack-buttons{gap:9px!important;margin-top:14px!important;}
+      .button-row .primary-btn,.button-row .secondary-btn,.stack-buttons .primary-btn,.stack-buttons .secondary-btn,.stack-buttons .ghost-btn{width:100%!important;}
+      .primary-btn,.secondary-btn,.ghost-btn{min-height:52px!important;padding:13px 16px!important;font-size:1rem!important;}
+      .progress{gap:4px!important;margin:4px 0 12px!important;}
+      .progress span{font-size:.7rem!important;padding:5px 7px!important;}
+      .mini-board{padding:11px 12px!important;margin-bottom:10px!important;border-radius:6px!important;}
+      .mini-board .small{font-size:.76rem!important;margin-bottom:3px!important;}
+      .mini-board strong{font-size:1.03rem!important;margin-bottom:2px!important;}
+      .mini-board p{font-size:.88rem!important;line-height:1.35!important;margin:0!important;}
+      .lens-prompt,.note,.live-stop,.mechanism{padding:11px 12px!important;border-radius:5px!important;margin-bottom:10px!important;}
+      .pill{font-size:.86rem!important;padding:7px 10px!important;margin-bottom:9px!important;}
+      .builder-label{font-size:.9rem!important;margin-bottom:6px!important;}
+      .builder-input,.builder-textarea,.builder-select{font-size:16px!important;min-height:50px!important;padding:12px 13px!important;border-radius:6px!important;}
+      .builder-textarea{min-height:88px!important;}
+      .output-box{padding:14px!important;border-radius:6px!important;}
+      .forum-footer{font-size:.66rem!important;text-align:left!important;margin-top:18px!important;padding-top:9px!important;}
+      #screen-landing .content{margin:0!important;}
+      #screen-landing h1{font-size:2.3rem!important;}
+      #screen-landing .button-row{margin-top:14px!important;}
+    }
+    @media(max-width:380px){
+      h1{font-size:1.95rem!important;}
+      h2{font-size:1.55rem!important;}
+      #screen-landing h1{font-size:2.05rem!important;}
+      .screen{padding-left:13px!important;padding-right:13px!important;}
+      .progress span{font-size:.66rem!important;padding:4px 6px!important;}
+      .session-meta{font-size:.78rem!important;}
     }
   `;
 
