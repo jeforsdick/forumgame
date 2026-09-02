@@ -195,5 +195,6 @@
   document.getElementById('generate-builder-btn').addEventListener('click',()=>{const type=document.getElementById('builder-type').value;const challenge=document.getElementById('builder-challenge').value.trim()||'—';const context=document.getElementById('builder-context').value.trim()||'—';const situation=document.getElementById('builder-situation').value.trim()||'—';const a=document.getElementById('builder-a').value.trim()||'—';const b=document.getElementById('builder-b').value.trim()||'—';const c=document.getElementById('builder-c').value.trim()||'—';const d=document.getElementById('builder-debrief').value.trim()||'—';document.getElementById('builder-output').innerHTML=`<h3>${formatType(type)}</h3><p><strong>Coaching challenge:</strong> ${challenge}</p><p><strong>Setting/routine:</strong> ${context}</p><p><strong>Situation/update:</strong> ${situation}</p><p><strong>Choices:</strong></p><ul><li><strong>A:</strong> ${a}</li><li><strong>B:</strong> ${b}</li><li><strong>C:</strong> ${c}</li></ul><p style="margin-top:12px"><strong>Debrief:</strong> ${d}</p>`;showScreen('screen-builder-output');});
   document.getElementById('builder-again-btn').addEventListener('click',()=>showScreen('screen-build'));
 </script>
+<script src="pdf-export.js"></script>
 </body>
 </html>
